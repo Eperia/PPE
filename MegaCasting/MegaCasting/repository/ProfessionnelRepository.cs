@@ -12,39 +12,144 @@ namespace MegaCasting.repository
     class ProfessionnelRepository
     {
 
+        SqlConnection connection = new SqlConnection("Server=B16-04\\SQLEXPRESS2017;Database=megacasting;Trusted_Connection=True;");
         public List<Professionnel> Select()
         {
-            List<Professionnel>  professionnels = new List<Professionnel>();
-            SqlConnection connection = new SqlConnection("Server=localhost;Database=megacasting;Trusted_Connection=True;");
+            List<Professionnel> professionnels = new List<Professionnel>();
+
+            try
+            {
 
 
-            SqlCommand commande = new SqlCommand("SelectProfessionnel",connection);
-            commande.CommandType = CommandType.StoredProcedure;
 
-            connection.Open();
 
-            SqlDataReader dataReader = commande.ExecuteReader();
+                SqlCommand commande = new SqlCommand("SelectProfessionnel", connection);
+                commande.CommandType = CommandType.StoredProcedure;
 
-            while (dataReader.Read())
-            { 
+                connection.Open();
 
-                Professionnel professionnel = new Professionnel();
-                professionnel.Id = dataReader.GetInt64(0);
-                professionnel.Libelle = dataReader.GetString(1);
-                professionnel.URL = dataReader.GetString(2);
-                professionnel.Adresse = dataReader.GetString(3);
-                professionnel.Email = dataReader.GetString(4);
-                professionnel.Telephone = dataReader.GetString(5);
-                professionnel.Fax = dataReader.GetString(6);
-                professionnel.NbrPoste = dataReader.GetInt32(7);
+                SqlDataReader dataReader = commande.ExecuteReader();
 
-                professionnels.Add(professionnel);
+                while (dataReader.Read())
+                {
+
+                    Professionnel professionnel = new Professionnel();
+                    professionnel.Id = dataReader.GetInt64(0);
+                    professionnel.Libelle = dataReader.GetString(1);
+                    professionnel.URL = dataReader.GetString(2);
+                    professionnel.Adresse = dataReader.GetString(3);
+                    professionnel.Telephone = dataReader.GetString(4);
+                   
+                    if (!dataReader.IsDBNull(5))
+                    {
+                        professionnel.Fax = dataReader.GetString(5);
+
+                    }
+                    professionnel.Email = dataReader.GetString(6);
+                    professionnel.NbrPoste = dataReader.GetInt32(7); 
+                    professionnels.Add(professionnel);
+                }
+
+                connection.Close();
             }
-
-            connection.Close();
-
+            catch (Exception erreur)
+            {
+                ErreurBDD erreurBDD = new ErreurBDD();
+                erreurBDD.ShowDialog();
+            }
             return professionnels;
         }
-        
+
+        public void Insert(Professionnel professionnel)
+        {
+            try
+            {
+
+
+                SqlCommand commande = new SqlCommand("InsertProfessionnel", connection);
+                commande.CommandType = CommandType.StoredProcedure;
+
+                commande.Parameters.Add("@libelle", SqlDbType.NVarChar).Value = professionnel.Libelle;
+                commande.Parameters.Add("@URL", SqlDbType.NVarChar).Value = professionnel.URL;
+                commande.Parameters.Add("@adresse", SqlDbType.NVarChar).Value = professionnel.Adresse;
+                commande.Parameters.Add("@telephone", SqlDbType.NVarChar).Value = professionnel.Telephone;
+                commande.Parameters.Add("@fax", SqlDbType.NVarChar).Value = professionnel.Fax;
+                commande.Parameters.Add("@email", SqlDbType.NVarChar).Value = professionnel.Email;
+                commande.Parameters.Add("@nbrPost", SqlDbType.Int).Value = professionnel.NbrPoste;
+                commande.Parameters.Add("@mdp", SqlDbType.Int).Value = 1234;
+
+
+                connection.Open();
+
+                SqlDataReader dataReader = commande.ExecuteReader();
+
+                connection.Close();
+            }
+            catch (Exception erreur)
+            {
+                ErreurBDD erreurBDD = new ErreurBDD();
+                erreurBDD.ShowDialog();
+            }
+
+
+        }
+
+        public void Update(Professionnel professionnel)
+        {
+            try
+            {
+                SqlCommand commande = new SqlCommand("UpdateProfessionnel", connection);
+                commande.CommandType = CommandType.StoredProcedure;
+
+                commande.Parameters.Add("@id", SqlDbType.BigInt).Value = professionnel.Id;
+                commande.Parameters.Add("@libelle", SqlDbType.NVarChar).Value = professionnel.Libelle;
+                commande.Parameters.Add("@URL", SqlDbType.NVarChar).Value = professionnel.URL;
+                commande.Parameters.Add("@adresse", SqlDbType.NVarChar).Value = professionnel.Adresse;
+                commande.Parameters.Add("@telephone", SqlDbType.NVarChar).Value = professionnel.Telephone;
+                commande.Parameters.Add("@fax", SqlDbType.NVarChar).Value = professionnel.Fax;
+                commande.Parameters.Add("@email", SqlDbType.NVarChar).Value = professionnel.Email;
+                commande.Parameters.Add("@nbrPost", SqlDbType.NVarChar).Value = professionnel.NbrPoste;
+                connection.Open();
+
+                SqlDataReader dataReader = commande.ExecuteReader();
+
+
+                connection.Close();
+            }
+            catch (Exception)
+            {
+                ErreurBDD erreurBDD = new ErreurBDD();
+                erreurBDD.ShowDialog();
+            }
+
+
+
+
+        }
+
+        public void Delete(Int64 Id)
+        {
+            try
+            {
+                SqlCommand commande = new SqlCommand("DeleteProfessionnel", connection);
+                commande.CommandType = CommandType.StoredProcedure;
+
+                commande.Parameters.Add("@id", SqlDbType.BigInt).Value = Id;
+
+                connection.Open();
+
+                SqlDataReader dataReader = commande.ExecuteReader();
+
+                connection.Close();
+            }
+            catch (Exception)
+            {
+                ErreurBDD erreurBDD = new ErreurBDD();
+                erreurBDD.ShowDialog();
+            }
+
+
+
+        }
     }
 }

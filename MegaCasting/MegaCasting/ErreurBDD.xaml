@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MegaCasting"
         mc:Ignorable="d"
-        Title="ErreurBDD" Height="300" Width="300">
+        Title="Erreur connexion Base de donnée"  Height="119.231" Width="687.179">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="66*"/>
+            <ColumnDefinition Width="613*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="label" Content="Une érreur c'est produit lors de la connexion a  la base de donnée" HorizontalAlignment="Left" VerticalAlignment="Top" Height="59" Width="659" Margin="10,19,0,0" FontSize="20" Foreground="#FF740707" FontWeight="ExtraBold" Grid.ColumnSpan="2"/>
+
     </Grid>
 </Window>

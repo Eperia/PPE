@@ -25,12 +25,11 @@ namespace MegaCasting
         PartenaireRepository partenaireRepository = new PartenaireRepository();
         public GestionPartenaire()
         {
-            partenaires = partenaireRepository.Select();
+            // partenaires = partenaireRepository.Select();
 
             InitializeComponent();
 
-            lvUsers.ItemsSource = partenaires;
-            lvUsers.Items.Refresh();
+            this.reload();
 
 
         }
@@ -46,7 +45,7 @@ namespace MegaCasting
             if (this.lvUsers.SelectedIndex  != -1 && this.lvUsers.SelectedIndex < partenaires.Count)
             {
                 STKPinformationPartenaire.Children.Clear();
-                InformationPartenaire informationPartenaire = new InformationPartenaire(partenaires, this, false);
+                InformationPartenaire informationPartenaire = new InformationPartenaire( this, false, partenaires[lvUsers.SelectedIndex]);
                 STKPinformationPartenaire.Children.Add(informationPartenaire);
             }
             
@@ -56,10 +55,10 @@ namespace MegaCasting
 
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void button_Ajouter(object sender, RoutedEventArgs e)
         {
             STKPinformationPartenaire.Children.Clear();
-            InformationPartenaire informationPartenaire = new InformationPartenaire(partenaires, this, true);
+            InformationPartenaire informationPartenaire = new InformationPartenaire(this, true);
             STKPinformationPartenaire.Children.Add(informationPartenaire);
             
 

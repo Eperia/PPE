@@ -22,28 +22,26 @@ namespace MegaCasting
     /// </summary>
     public partial class InformationPartenaire : UserControl
     {
-        Partenaire partenaire;
+        Partenaire partenaire = new Partenaire();
         GestionPartenaire gestionPartenaire;
-        List<Partenaire> partenaires;
         bool ajout;
         PartenaireRepository partenaireRepository = new PartenaireRepository();
 
-        public InformationPartenaire(List<Partenaire> _partenaires, GestionPartenaire _gestionPartenaire,bool _ajout)
+        public InformationPartenaire(GestionPartenaire _gestionPartenaire, bool _ajout,Partenaire _partenaires = null)
         {
             InitializeComponent();
 
             ajout = _ajout;
             gestionPartenaire = _gestionPartenaire;
-            partenaires = _partenaires;
 
-            if (_ajout)
+            if (!_ajout || _partenaires != null )
             {
-                partenaire = new Partenaire();
+                partenaire = _partenaires;
             }
-            else
-            {
-                partenaire = _partenaires[_gestionPartenaire.lvUsers.SelectedIndex];
-            }
+
+            ajout = _ajout;
+            gestionPartenaire = _gestionPartenaire;
+
             TxtBlibelle.Text = (partenaire.Libelle == null) ? "" :  partenaire.Libelle.ToString();
             TxtBAdresse.Text = (partenaire.Adresse == null) ? "" :  partenaire.Adresse.ToString();
             TxtTel.Text   = (partenaire.Telephone == null) ? "" : partenaire.Telephone.ToString();

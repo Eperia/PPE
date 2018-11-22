@@ -55,6 +55,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Class\DomaineMetier.cs" />
+    <Compile Include="Class\Metier.cs" />
     <Compile Include="Class\Partenaire.cs" />
     <Compile Include="Class\Professionnel.cs" />
     <Compile Include="ErreurBDD.xaml.cs">
@@ -63,6 +65,19 @@
     <Compile Include="ErreurSaisie.xaml.cs">
       <DependentUpon>ErreurSaisie.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GestionMetier.xaml.cs">
+      <DependentUpon>GestionMetier.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GestionProfessionnel.xaml.cs">
+      <DependentUpon>GestionProfessionnel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InformationMetier.xaml.cs">
+      <DependentUpon>InformationMetier.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InformationProfessionnel.xaml.cs">
+      <DependentUpon>InformationProfessionnel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="repository\MetierRepository.cs" />
     <Compile Include="repository\PartenaireRepository.cs" />
     <Compile Include="repository\ProfessionnelRepository.cs" />
     <Page Include="ErreurBDD.xaml">
@@ -73,11 +88,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GestionMetier.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GestionPartenaire.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GestionProfessionnel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InformationMetier.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="InformationPartenaire.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InformationProfessionnel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -126,5 +157,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

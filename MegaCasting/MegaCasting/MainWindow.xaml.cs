@@ -59,5 +59,11 @@ namespace MegaCasting
             GestionPartenaire gestionPartenaire = new GestionPartenaire();
             gestionPartenaire.Show();
         }
+
+        private void Click_AfficherProfessionnel(object sender, RoutedEventArgs e)
+        {
+            GestionProfessionnel gestionProfessionnel = new GestionProfessionnel();
+            gestionProfessionnel.Show();
+        }
     }
 }

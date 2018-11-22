@@ -1,0 +1,14 @@
+﻿<UserControl x:Class="MegaCasting.InformationMetier"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MegaCasting"
+             mc:Ignorable="d" Height="65.625" Width="312.784" Background="#FF211C1C">
+    <Grid>
+        <Label x:Name="LbMetier" Content="Metier : " HorizontalAlignment="Left" VerticalAlignment="Top" Height="27" Width="101" Foreground="White"/>
+        <Label x:Name="LbDomaineMetier" Content="Domaine Métier :" HorizontalAlignment="Left" VerticalAlignment="Top" Height="27" Width="101" Margin="0,32,0,0" Foreground="White"/>
+        <ComboBox x:Name="CbDomaineMetier" HorizontalAlignment="Left" Margin="131,34,0,0" VerticalAlignment="Top" Width="172"/>
+
+    </Grid>
+</UserControl>

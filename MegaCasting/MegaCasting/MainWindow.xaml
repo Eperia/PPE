@@ -10,7 +10,7 @@
 
         <Menu DockPanel.Dock="Top" Margin="0,0,0,395">
             <MenuItem Header="Gestion Contact">
-                <MenuItem Header="Professionnel" />
+                <MenuItem Header="Professionnel" Click="Click_AfficherProfessionnel" />
                 <MenuItem Header="Partenaire" Click="MenuItem_Click_1" />
 
             </MenuItem>

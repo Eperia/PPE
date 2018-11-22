@@ -9,21 +9,17 @@ using System.Threading.Tasks;
 
 namespace MegaCasting.repository
 {
-    class PartenaireRepository
+    class MetierRepository
     {
-        // SqlConnection connection = new SqlConnection("Server=localhost;Database=megacasting;Trusted_Connection=True;");
         SqlConnection connection = new SqlConnection("Server=B16-04\\SQLEXPRESS2017;Database=megacasting;Trusted_Connection=True;");
-        public List<Partenaire> Select()
+        
+        public List<Metier> Select()
         {
-            List<Partenaire> partenaires = new List<Partenaire>();
-
+            List<Metier> metiers = new List<Metier>();
+            
             try
             {
-
-
-
-
-                SqlCommand commande = new SqlCommand("SelectPartenaire", connection);
+                SqlCommand commande = new SqlCommand("SelectMetier", connection);
                 commande.CommandType = CommandType.StoredProcedure;
 
                 connection.Open();
@@ -33,18 +29,15 @@ namespace MegaCasting.repository
                 while (dataReader.Read())
                 {
 
-                    Partenaire partenaire = new Partenaire();
-                    partenaire.Id = dataReader.GetInt64(0);
-                    partenaire.Libelle = dataReader.GetString(1);
-                    partenaire.URL = dataReader.GetString(2);
-                    partenaire.Adresse = dataReader.GetString(3);
-                    partenaire.Telephone = dataReader.GetString(4);
-                    if (!dataReader.IsDBNull(5))
-                    {
-                        partenaire.Fax = dataReader.GetString(5);
+                    Metier metier = new Metier();
 
-                    }
-                    partenaires.Add(partenaire);
+
+                    metier.Id = dataReader.GetInt64(0);
+                    metier.Nom = dataReader.GetString(1);
+                    metier.domaineMetier.Id = dataReader.GetInt64(2);
+                    metier.domaineMetier.Nom = dataReader.GetString(3);
+
+                    metiers.Add(metier);
                 }
 
                 connection.Close();
@@ -54,7 +47,7 @@ namespace MegaCasting.repository
                 ErreurBDD erreurBDD = new ErreurBDD();
                 erreurBDD.ShowDialog();
             }
-            return partenaires;
+            return metiers;
         }
 
         public void Insert(Partenaire partenaire)
