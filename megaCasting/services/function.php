@@ -21,9 +21,13 @@ class functions
 		if (isset($_SESSION["loginId"]) && $_SESSION["loginId"] != null) {
 			$templateAuth = file_get_contents("../template/authOK.html");
 			$profil = requeteSql::getProfil($_SESSION["loginId"]);
+			
 			$templateAuth = str_replace("||NAME||", $profil["Nom"], $templateAuth);
+
 		}else{
 			$templateAuth = file_get_contents("../template/authWrong.html");
+			$url = $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+			$templateAuth = str_replace("||URL||", $url, $templateAuth);
 		}
 
 		return str_replace("||AUTH||", $templateAuth, $page);

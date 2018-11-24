@@ -15,6 +15,9 @@ $scripts = "";
 // recupere le contenue de la vue
 $page = file_get_contents('../views/accueil.php');
 
+$header = file_get_contents('../template/header.html');
+$page = str_replace("||HEADER||", $header, $page);
+
 //affiche le template d'authentification
 $page = functions::authTemplate($page);
 

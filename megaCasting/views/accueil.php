@@ -4,20 +4,12 @@
 	<meta charset="utf-8">
 	<title>Acceuil</title>
 	<link rel="stylesheet" type="text/css" href="../styles/index.css">
+	<link rel="stylesheet" type="text/css" href="../styles/accueil.css">
 </head>
 <body>
-	<header>
-		<img src="../others/megaCastingFond.jpg" class="element-header">
-		<button class="element-header" active>Accueil</button>
-		<button class="element-header">Conseils & Interviews</button>
-		<button class="element-header">Boutique</button>
-		<div class="element-header authDiv">
-			||AUTH||
-		</div>
-		<div class="clearboth"></div>
-	</header>
+	||HEADER||
 	<div class="container">
-		<img src="../others/megaCastingFond.jpg" class="img-fond">
+		<img src="../others/megaCastingFond.svg" class="img-fond">
 		<div class="hr-gray"></div>
 		<div class="main main-left">
 			<!-- Partie formulaire de recherche -->

@@ -49,6 +49,7 @@ class requeteSQL
 		$sql = "select * from professionnel where Id=$id";
 		$stmt = sqlsrv_query( $bdd, $sql);
 		$stmt = sqlsrv_fetch_array($stmt);
+		
 		requeteSQL::closeBdd($bdd);
 		return $stmt;
 	}
@@ -62,12 +63,23 @@ class requeteSQL
 		while (($temp = sqlsrv_fetch_array($stmt)) != null){
 			array_push($response, $temp);
 		}
+
 		requeteSQL::closeBdd($bdd);
 		return $response;
 	}
 
 	public static function getSearchOffres($search, $parametre = null){
+		$bdd =  requeteSQL::connexionBdd();
+		$sql = "select * from OffreCasting inner join professionnel on OffreCasting.[Id-Professionel] = professionnel.Id where OffreCasting.Id = $search and Etat='Valider'";
+		$stmt = sqlsrv_query($bdd, $sql);
+		$response = [];
 
+		while (($temp = sqlsrv_fetch_array($stmt)) != null){
+			array_push($response, $temp);
+		}
+
+		requeteSQL::closeBdd($bdd);
+		return $response;
 	}
 	/*
 	public static function addOffreCasting($titre, $duree, $dt_debut_contrat, $nbPost, $localisation, $desc){

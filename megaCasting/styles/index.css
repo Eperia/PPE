@@ -71,24 +71,6 @@ header > div:hover > button{
 	margin: 0;
 }
 
-.main-left{
-	width: 30vw;
-	background-color: gray;
-	margin-left: 2vw;
-}
-
-
-.bar-search > div, .bar-search{
-	text-align: center;
-}
-
-#searchbar{
-	width: 70%;}
-
-.main-right{
-	width: 64vw;
-}
-
 /* Panel de connection */
 
 #btn-panel-login{
@@ -178,19 +160,16 @@ header > div:hover > button{
 	background-color: rgba(220,20,20,0.7);
 }
 
-/* Container Formulaire */
-
-.offre-div{
-	border: 1px solid black;
-	margin: 10px 0;
+.errorPage{
+	background-color: rgb(15,15,15);
+	display: inline-block;
+	width: 50vw;
+	margin: 5vh 0;
+	padding: 2vh 3vw;
+	border-radius: 5px;
+	color: gray;
 }
 
-.offre-date{
-	float: right;
-	margin-right: 5px;
-}
-
-.offre-link{
-	float: right;
-	margin-right: 5px;
+.errorPage > div{
+	margin: 10px;
 }

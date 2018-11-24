@@ -1,0 +1,34 @@
+.main-left{
+	width: 30vw;
+	background-color: gray;
+	margin-left: 2vw;
+}
+
+
+.bar-search > div, .bar-search{
+	text-align: center;
+}
+
+#searchbar{
+	width: 70%;}
+
+.main-right{
+	width: 64vw;
+}
+
+/* Container Formulaire */
+
+.offre-div{
+	border: 1px solid black;
+	margin: 10px 0;
+}
+
+.offre-date{
+	float: right;
+	margin-right: 5px;
+}
+
+.offre-link{
+	float: right;
+	margin-right: 5px;
+}

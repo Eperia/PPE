@@ -52,7 +52,11 @@ function VerifFormIsRight(target){
 	var formAct = getElementsByAttribute("idForm", idForm)[0];
 
 	var action = formAct.getAttribute("action");
-	var link = action + "?";
+	if (action.match(`([a-zA-Z0-9]*)=([a-zA-Z0-9]*)`)) {
+		link = action + "&";
+	}else{
+		link = action + "?";
+	}
 	var formValide = true;
 	
 	var listElement = listElementForm();
@@ -64,7 +68,8 @@ function VerifFormIsRight(target){
 			var name = inputAct.name;
 			var value = inputAct.value;
 			if (inputAct.getAttribute("id") != "submit" + idForm){ 
-
+				if (inputAct.getAttribute("type") == 'checkbox')value = inputAct.checked;
+				
 				if (inputAct.hasAttribute("required")){
 
 					if (value == "" || value == null) {
