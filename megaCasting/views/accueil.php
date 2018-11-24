@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Acceuil</title>
+	<link rel="stylesheet" type="text/css" href="../fontawesome/css/all.min.css">
 	<link rel="stylesheet" type="text/css" href="../styles/index.css">
 	<link rel="stylesheet" type="text/css" href="../styles/accueil.css">
 </head>

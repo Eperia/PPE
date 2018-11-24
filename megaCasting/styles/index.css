@@ -65,6 +65,11 @@ header > div:hover > button{
 	background-color: gray;
 }
 
+.hr-black{	
+	height: 3vh;
+	background-color: rgb(15,15,15);
+}
+
 .main{
 	vertical-align: top;
 	display: inline-block;
@@ -158,6 +163,10 @@ header > div:hover > button{
 	left: 0;
 	border-radius: 5px;
 	background-color: rgba(220,20,20,0.7);
+}
+
+#containerMain{
+	text-align: center;
 }
 
 .errorPage{

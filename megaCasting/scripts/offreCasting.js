@@ -16,7 +16,8 @@ if (Offre[0] == undefined) {
 
 	info = document.getElementById("pro-nom");
 	var div = document.createElement("a");
-	div.setAttribute("href", "profilController.php?id=$id");
+	var id = Offre["Id-Professionel"];
+	div.setAttribute("href", "profilController.php?id=" + id);
 	div.innerHTML += Offre.Nom;
 	info.appendChild(div);
 
