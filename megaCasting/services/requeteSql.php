@@ -151,6 +151,19 @@ class requeteSQL
 		requeteSQL::closeBdd($bdd);
 		return $response;
 	}
+
+	public static function getAllPacks(){
+		$bdd =  requeteSQL::connexionBdd();
+		$sql = "select * from PackCasting";
+		$stmt = sqlsrv_query( $bdd, $sql);
+		$response = [];
+
+		while (($temp = sqlsrv_fetch_array($stmt)) != null){
+			array_push($response, $temp);
+		}
+		requeteSQL::closeBdd($bdd);
+		return $response;
+	}
 }
 
 ?>

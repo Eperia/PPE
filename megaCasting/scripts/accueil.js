@@ -19,11 +19,11 @@ function OffreContainer(offre){
 
 	var description = document.createElement('div');
 	description.className = 'offre-desc';
-	description.innerHTML = offre.desc + "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+	description.innerHTML = offre.desc.substr(0, 250);
 
 	var prof = document.createElement('span');
 	prof.className = 'offre-pro';
-	prof.innerHTML = "Posté par :" + offre.Nom;
+	prof.innerHTML = "Posté par: " + offre.Nom;
 
 	var link = document.createElement('a');
 	link.className = 'offre-link';

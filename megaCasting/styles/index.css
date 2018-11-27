@@ -173,3 +173,12 @@ header > div:hover > button{
 .errorPage > div{
 	margin: 10px;
 }
+
+/*  Pied de page  */
+
+footer{
+	background-color: rgb(15,15,15);
+	color: lightgray;
+	text-align: center;
+	margin: 10px 0; 
+}

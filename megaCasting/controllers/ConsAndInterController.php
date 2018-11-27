@@ -18,6 +18,9 @@ $page = file_get_contents('../views/ConsAndInter.php');
 $header = file_get_contents('../template/header.html');
 $page = str_replace("||HEADER||", $header, $page);
 
+$footer = file_get_contents('../template/footer.html');
+$page = str_replace("||FOOTER||", $footer, $page);
+
 //affiche le template d'authentification
 $page = functions::authTemplate($page);
 

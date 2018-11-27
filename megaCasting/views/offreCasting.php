@@ -53,6 +53,7 @@
 			</div>
 		</div>
 	</div>
+	||FOOTER||
 	||SCRIPTS||
 	<script type="text/javascript" src="../services/date.format.js"></script>
 	<script type="text/javascript" src="../services/formulaire.js"></script>
