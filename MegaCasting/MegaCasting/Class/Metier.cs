@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MegaCasting.Class
 {
-    class Metier
+    public class Metier
     {
         private Int64 id;
 
@@ -28,8 +28,13 @@ namespace MegaCasting.Class
             this.id = 1;
             this.nom = "test";
         }
+        private Int64 id_DomaineMetier;
 
-        public DomaineMetier domaineMetier;
+        public Int64 Id_DomaineMetier
+        {
+            get { return id_DomaineMetier; }
+            set { id_DomaineMetier = value; }
+        }
 
     }
 }

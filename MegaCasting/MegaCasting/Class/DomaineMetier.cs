@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MegaCasting.Class
 {
-    class DomaineMetier
+   public class DomaineMetier
     {
         private Int64 id;
 

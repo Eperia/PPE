@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MegaCasting"
         mc:Ignorable="d"
-        Title="GestionMetier"  Height="450" Width="800">
-    <Grid>
-        <ListBox x:Name="listBox_Metier" HorizontalAlignment="Left" Height="409" VerticalAlignment="Top" Width="394"/>
+        Title="GestionMetier"  Height="494.745" Width="753.977">
+    <Grid Margin="0,0,2,0">
+        <ListBox x:Name="listBox_Metier" HorizontalAlignment="Left" Height="409" VerticalAlignment="Top" Width="394" Margin="10,45,0,0"/>
+        <Button x:Name="BtAjout" Content="Ajouter" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="123" Height="30" Click="BtAjout_Click"/>
+        <StackPanel Name="STKPinformationMetier" HorizontalAlignment="Left" Height="90" VerticalAlignment="Top" Width="325" Margin="409,45,0,0"/>
     </Grid>
 </Window>

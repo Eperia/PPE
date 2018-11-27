@@ -47,6 +47,7 @@ namespace MegaCasting
                 STKPinformationPartenaire.Children.Clear();
                 InformationPartenaire informationPartenaire = new InformationPartenaire( this, false, partenaires[lvUsers.SelectedIndex]);
                 STKPinformationPartenaire.Children.Add(informationPartenaire);
+
             }
             
             

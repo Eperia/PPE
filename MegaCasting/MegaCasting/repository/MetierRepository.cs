@@ -11,8 +11,9 @@ namespace MegaCasting.repository
 {
     class MetierRepository
     {
-        SqlConnection connection = new SqlConnection("Server=B16-04\\SQLEXPRESS2017;Database=megacasting;Trusted_Connection=True;");
-        
+        SqlConnection connection = new SqlConnection("Server=B02-11;Database=megacasting;User Id=sa;Password=SQL2014");
+
+
         public List<Metier> Select()
         {
             List<Metier> metiers = new List<Metier>();
@@ -34,15 +35,14 @@ namespace MegaCasting.repository
 
                     metier.Id = dataReader.GetInt64(0);
                     metier.Nom = dataReader.GetString(1);
-                    metier.domaineMetier.Id = dataReader.GetInt64(2);
-                    metier.domaineMetier.Nom = dataReader.GetString(3);
+                    metier.Id_DomaineMetier = dataReader.GetInt64(2);
 
                     metiers.Add(metier);
                 }
 
                 connection.Close();
             }
-            catch (Exception)
+            catch (Exception exeption)
             {
                 ErreurBDD erreurBDD = new ErreurBDD();
                 erreurBDD.ShowDialog();
@@ -50,20 +50,18 @@ namespace MegaCasting.repository
             return metiers;
         }
 
-        public void Insert(Partenaire partenaire)
+        public void Insert(Metier metier)
         {
             try
             {
 
 
-                SqlCommand commande = new SqlCommand("InsertPartenaire", connection);
+                SqlCommand commande = new SqlCommand("InsertMetier", connection);
                 commande.CommandType = CommandType.StoredProcedure;
 
-                commande.Parameters.Add("@libelle", SqlDbType.NVarChar).Value = partenaire.Libelle;
-                commande.Parameters.Add("@URL", SqlDbType.NVarChar).Value = partenaire.URL;
-                commande.Parameters.Add("@adresse", SqlDbType.NVarChar).Value = partenaire.Adresse;
-                commande.Parameters.Add("@telephone", SqlDbType.NVarChar).Value = partenaire.Telephone;
-                commande.Parameters.Add("@fax", SqlDbType.NVarChar).Value = partenaire.Fax;
+                commande.Parameters.Add("@Nom", SqlDbType.NVarChar).Value = metier.Nom;
+                commande.Parameters.Add("@Id_DomaineMetier", SqlDbType.NVarChar).Value = metier.Id_DomaineMetier;
+
                 connection.Open();
 
                 SqlDataReader dataReader = commande.ExecuteReader();
@@ -79,19 +77,16 @@ namespace MegaCasting.repository
 
         }
 
-        public void Update(Partenaire partenaire)
+        public void Update(Metier metier)
         {
             try
             {
-                SqlCommand commande = new SqlCommand("UpdatePartenaire", connection);
+                SqlCommand commande = new SqlCommand("UpdateMetier", connection);
                 commande.CommandType = CommandType.StoredProcedure;
 
-                commande.Parameters.Add("@id", SqlDbType.BigInt).Value = partenaire.Id;
-                commande.Parameters.Add("@libelle", SqlDbType.NVarChar).Value = partenaire.Libelle;
-                commande.Parameters.Add("@URL", SqlDbType.NVarChar).Value = partenaire.URL;
-                commande.Parameters.Add("@adresse", SqlDbType.NVarChar).Value = partenaire.Adresse;
-                commande.Parameters.Add("@telephone", SqlDbType.NVarChar).Value = partenaire.Telephone;
-                commande.Parameters.Add("@fax", SqlDbType.NVarChar).Value = partenaire.Fax;
+                commande.Parameters.Add("@id", SqlDbType.BigInt).Value = metier.Id;
+                commande.Parameters.Add("@Nom", SqlDbType.NVarChar).Value = metier.Nom;
+                commande.Parameters.Add("@Id_DomaineMetier", SqlDbType.NVarChar).Value = metier.Id_DomaineMetier;
                 connection.Open();
 
                 SqlDataReader dataReader = commande.ExecuteReader();
@@ -99,7 +94,7 @@ namespace MegaCasting.repository
 
                 connection.Close();
             }
-            catch (Exception)
+            catch (Exception test) 
             {
                 ErreurBDD erreurBDD = new ErreurBDD();
                 erreurBDD.ShowDialog();
@@ -114,7 +109,7 @@ namespace MegaCasting.repository
         {
             try
             {
-                SqlCommand commande = new SqlCommand("DeletePartenaire", connection);
+                SqlCommand commande = new SqlCommand("DeleteMetier", connection);
                 commande.CommandType = CommandType.StoredProcedure;
 
                 commande.Parameters.Add("@id", SqlDbType.BigInt).Value = Id;

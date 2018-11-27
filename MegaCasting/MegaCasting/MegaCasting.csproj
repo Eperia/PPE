@@ -77,6 +77,7 @@
     <Compile Include="InformationProfessionnel.xaml.cs">
       <DependentUpon>InformationProfessionnel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="repository\DomaineMetierRepository.cs" />
     <Compile Include="repository\MetierRepository.cs" />
     <Compile Include="repository\PartenaireRepository.cs" />
     <Compile Include="repository\ProfessionnelRepository.cs" />

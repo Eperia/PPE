@@ -16,7 +16,7 @@
             </MenuItem>
             <MenuItem Header="Gestion Métier">
                 <MenuItem Header="Domaine métier" />
-                <MenuItem Header="Métier" />
+                <MenuItem Header="Métier" Click="MenuItem_Click_2" />
             </MenuItem>
             <MenuItem Header="Gestion Pack">
             </MenuItem>

@@ -12,7 +12,8 @@ namespace MegaCasting.repository
     class ProfessionnelRepository
     {
 
-        SqlConnection connection = new SqlConnection("Server=B16-04\\SQLEXPRESS2017;Database=megacasting;Trusted_Connection=True;");
+        SqlConnection connection = new SqlConnection("Server=B02-11;Database=megacasting;User Id=sa;Password=SQL2014");
+
         public List<Professionnel> Select()
         {
             List<Professionnel> professionnels = new List<Professionnel>();

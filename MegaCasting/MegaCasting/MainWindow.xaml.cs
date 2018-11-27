@@ -65,5 +65,11 @@ namespace MegaCasting
             GestionProfessionnel gestionProfessionnel = new GestionProfessionnel();
             gestionProfessionnel.Show();
         }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            GestionMetier gestionMetier = new GestionMetier();
+            gestionMetier.Show();
+        }
     }
 }

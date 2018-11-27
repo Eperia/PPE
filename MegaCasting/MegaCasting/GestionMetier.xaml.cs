@@ -21,17 +21,28 @@ namespace MegaCasting
     /// </summary>
     public partial class GestionMetier : Window
     {
-        MetierRepository metierRepository = new MetierRepository();
+       private MetierRepository metierRepository = new MetierRepository();
 
         public GestionMetier()
         {
             InitializeComponent();
-
+            reload();
+        }
+        public void reload()
+        {
             foreach (Metier metier in metierRepository.Select())
             {
-
+                listBox_Metier.Items.Add(new InformationMetier(metier));
             }
-            listBox_Metier.Items.Add()
+            listBox_Metier.Items.Refresh();
+
+        }
+
+        private void BtAjout_Click(object sender, RoutedEventArgs e)
+        {
+            InformationMetier informationMetier = new InformationMetier();
+            STKPinformationMetier.Children.Add(informationMetier);
+
         }
     }
 }
