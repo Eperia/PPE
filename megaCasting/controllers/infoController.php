@@ -7,13 +7,12 @@ if (isset($_GET["auth-name"])){
 	$email = htmlentities($_GET["auth-name"]);
 	$password = htmlentities($_GET["auth-pass"]);
 	requeteSql::connexion($email, $password);
-	header("Location: consAndInterController.php");	
+	$id = htmlentities($_GET["id"]);
+	header("Location: infoController.php?id=$id");	
 }
 
-$scripts = "";
-
 // recupere le contenue de la vue
-$page = file_get_contents('../views/ConsAndInter.php');
+$page = file_get_contents('../views/info.php');
 
 $header = file_get_contents('../template/header.html');
 $page = str_replace("||HEADER||", $header, $page);
@@ -21,10 +20,15 @@ $page = str_replace("||HEADER||", $header, $page);
 //affiche le template d'authentification
 $page = functions::authTemplate($page);
 
+$scripts = "";
+
 // récupere toute les offres de la bdd
-$listInfos = requeteSql::getAllInfos();
+$info = requeteSql::getSearchInfo($_GET["id"]);
 // transfert les offres du php au js
-$scripts .= functions::SendVar('Infos', $listInfos);
+$scripts .= functions::SendVar('Info', $info);
+
+$Page404 = file_get_contents('../template/error404.html');
+$scripts .= functions::SendVar('Page404', $Page404);
 
 $page = str_replace("||SCRIPTS||", $scripts, $page);
 

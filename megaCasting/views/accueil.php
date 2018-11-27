@@ -11,7 +11,7 @@
 	||HEADER||
 	<div class="container">
 		<img src="../others/megaCastingFond.svg" class="img-fond">
-		<div class="hr-gray"></div>
+		<div class="hr-black"></div>
 		<div class="main main-left">
 			<!-- Partie formulaire de recherche -->
 			<div class="div-bar-search">

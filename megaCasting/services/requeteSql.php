@@ -138,6 +138,19 @@ class requeteSQL
 		requeteSQL::closeBdd($bdd);
 		return $response;
 	}
+
+	public static function getSearchInfo($id){
+		$bdd =  requeteSQL::connexionBdd();
+		$sql = "select * from ContenuEditorial inner join TypeContenu on ContenuEditorial.[Id-TypeContenu] = TypeContenu.Id where ContenuEditorial.Id = $id";
+		$stmt = sqlsrv_query( $bdd, $sql);
+		$response = [];
+
+		while (($temp = sqlsrv_fetch_array($stmt)) != null){
+			array_push($response, $temp);
+		}
+		requeteSQL::closeBdd($bdd);
+		return $response;
+	}
 }
 
 ?>

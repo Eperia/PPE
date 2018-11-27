@@ -60,13 +60,10 @@ header > div:hover > button{
 	width: 100%;
 }
 
-.hr-gray{
-	height: 3vh;
-	background-color: gray;
-}
-
 .hr-black{	
-	height: 3vh;
+	height: 2vh;
+	margin: -4px;
+	width: 100%;
 	background-color: rgb(15,15,15);
 }
 
@@ -111,7 +108,7 @@ header > div:hover > button{
 	background-color: white;
 	border-radius: 5px;
 	width: 30vw;
-	height: 55vh;
+	height: 35vh;
 	margin: 0 auto;
 	margin-top: 20vh;
 	margin-right: 20vw;
@@ -124,19 +121,13 @@ header > div:hover > button{
 	top: -8vh;
 }
 
-.container-formulaire{
-	width: 200vw;
-}
-
 
 .formulaire{
 	transition: 0.3s;
 	display: inline-block;
 	text-align: center;
 	width: 30vw;
-	position: absolute;
-	top: 0;
-	left: 0;
+	margin-top: 20px;
 }
 
 .div-auth .div-input{
