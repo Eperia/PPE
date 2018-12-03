@@ -14,6 +14,11 @@ namespace MegaCasting.repository
        // SqlConnection connection = new SqlConnection("Server=B02-11;Database=megacasting;User Id=sa;Password=SQL2014");
         SqlConnection connection = new SqlConnection("Server=localhost;Database=megacasting;Trusted_Connection=True;");
 
+        /// <summary>
+        /// Récupère toutes les données de la table "DomaineMetier"
+        /// Utilise la procédure "SelectDomaineMetier"
+        /// </summary>
+        /// <returns> renvoie une List<DomaineMetier> </returns>
         public List<DomaineMetier> Select()
         {
             List<DomaineMetier> domaineMetiers = new List<DomaineMetier>();
@@ -49,6 +54,11 @@ namespace MegaCasting.repository
             }
             return domaineMetiers;
         }
+        /// <summary>
+        /// Récupère l'id qui correspond au nom du domaine métier
+        /// Utilise la procédure "SelectIdDomaineMetier"
+        /// </summary>
+        /// <returns> renvoie un Int64 </returns>
         public Int64 SelectId(string nom)
         {
             Int64 idDomaineMetier = 0;
@@ -78,6 +88,11 @@ namespace MegaCasting.repository
             }
             return idDomaineMetier;
         }
+        /// <summary>
+        /// Récupère le nom qui correspond a l'id du domaine métier 
+        /// Utilise la procédure "SelectNameDomaineMetier"
+        /// </summary>
+        /// <returns> renvoie une string </returns>
         public string SelectName(Int64 id)
         {
             string name = "";
@@ -108,6 +123,11 @@ namespace MegaCasting.repository
             return name;
         }
 
+        /// <summary>
+        /// Insert le nom et retourn l'id insérer
+        /// Utilise la procédure "InsertDomaineMetier"
+        /// </summary>
+        /// <returns> renvoie un Int64 </returns>
         public Int64  Insert(DomaineMetier domaineMetier)
         {
             Int64 id = 0;
@@ -138,6 +158,11 @@ namespace MegaCasting.repository
 
         }
 
+        /// <summary>
+        /// Mise à jour de la table DomaineMetier
+        /// Utilise la procédure "UpdateDomaineMetier"
+        /// </summary>
+        /// <returns></returns>
         public void Update(DomaineMetier domaineMetier)
         {
             try
@@ -166,6 +191,11 @@ namespace MegaCasting.repository
 
         }
 
+        /// <summary>
+        /// supprimes les donnés qui sont lié a l'id de la table "DomaineMetier" fournis en paramètre
+        /// Utilise la procédure "DeleteDomaineMetier"
+        /// </summary>
+        /// <returns></returns>
         public void Delete(Int64 Id)
         {
             try
@@ -191,6 +221,12 @@ namespace MegaCasting.repository
 
 
         }
+
+        /// <summary>
+        /// Verif si le domaine metier est lié à un métier
+        /// Utilise la procédure "VerifDomaineMetier_Metier"
+        /// </summary>
+        /// <returns>renvoie un bool</returns>
         public bool VerifDomaineMetier_Metier(Int64 _Id) {
             bool isTrue = false;
             Int64 id = 0;

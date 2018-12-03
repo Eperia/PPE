@@ -28,6 +28,11 @@ namespace MegaCasting
             InitializeComponent();
             reload();
         }
+
+        /// <summary>
+        /// Créer pour chaque métier un UC qui donne en paramètre: null et le métier
+        /// Puis refresh la listeBox "listBox_Metier"
+        /// </summary>
         public void reload()
         {
             foreach (Metier metier in metierRepository.Select())
@@ -38,6 +43,10 @@ namespace MegaCasting
 
         }
 
+        /// <summary>
+        /// instancie l'UC et fournis la listeBox "listBox_Metier"
+        /// ajoute l'UC au StackPanel "STKPinformationMetier"
+        /// </summary>
         private void BtAjout_Click(object sender, RoutedEventArgs e)
         {
             InformationMetier informationMetier = new InformationMetier(this.listBox_Metier);

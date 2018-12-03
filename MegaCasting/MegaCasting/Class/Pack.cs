@@ -8,16 +8,21 @@ namespace MegaCasting.Class
 {
     public class Pack
     {
-
+        #region Champs
         private Int64 id;
+        private string libelle;
+        private PrixPack prixPack;
+        private int nbrPoste;
 
+        #endregion
+
+        #region Propriétés
         public Int64 ID
         {
             get { return id; }
             set { id = value; }
         }
 
-        private string libelle;
 
         public string Libelle
         {
@@ -25,7 +30,6 @@ namespace MegaCasting.Class
             set { libelle = value; }
         }
 
-        private PrixPack prixPack;
 
         public PrixPack PrixPack
         {
@@ -33,7 +37,6 @@ namespace MegaCasting.Class
             set { prixPack = value; }
         }
 
-        private int nbrPoste;
 
         public int NbrPoste
         {
@@ -41,10 +44,13 @@ namespace MegaCasting.Class
             set { nbrPoste = value; }
         }
 
-        public Pack() {
+        public Pack()
+        {
             PrixPack = new PrixPack();
 
         }
+        #endregion
+
 
 
     }

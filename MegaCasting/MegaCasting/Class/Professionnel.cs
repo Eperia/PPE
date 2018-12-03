@@ -4,16 +4,29 @@ namespace MegaCasting.repository
 {
     public class Professionnel
     {
+
+        #region Champs
         private Int64 id;
-       
-            
+        private string libelle;
+        private string url;
+        private string telephone;
+        private string email;
+        private int nbrPoste;
+        private string fax;
+        private string mdp;
+        private string rue;
+        private string ville;
+        private string pays;
+        private string codePostal;
+
+        #endregion
+        #region Propriété
         public Int64 Id
         {
             get { return id; }
             set { id = value; }
         }
 
-        private string libelle;
 
         public string Libelle
         {
@@ -21,7 +34,6 @@ namespace MegaCasting.repository
             set { libelle = value; }
         }
 
-        private string url;
 
         public string URL
         {
@@ -29,15 +41,6 @@ namespace MegaCasting.repository
             set { url = value; }
         }
 
-        private string adresse;
-
-        public string Adresse
-        {
-            get { return adresse; }
-            set { adresse = value; }
-        }
-
-        private string telephone;
 
         public string Telephone
         {
@@ -45,14 +48,12 @@ namespace MegaCasting.repository
             set { telephone = value; }
         }
 
-        private string email;
 
         public string Email
         {
             get { return email; }
             set { email = value; }
         }
-        private int nbrPoste;
 
         public int NbrPoste
         {
@@ -60,7 +61,6 @@ namespace MegaCasting.repository
             set { nbrPoste = value; }
         }
 
-        private string fax;
 
         public string Fax
         {
@@ -68,7 +68,6 @@ namespace MegaCasting.repository
             set { fax = value; }
         }
 
-        private string mdp;
 
         public string Mdp
         {
@@ -76,7 +75,6 @@ namespace MegaCasting.repository
             set { mdp = value; }
         }
 
-        private string rue;
 
         public string Rue
         {
@@ -84,19 +82,26 @@ namespace MegaCasting.repository
             set { rue = value; }
         }
 
-        private string ville;
 
         public string Ville
         {
             get { return ville; }
             set { ville = value; }
         }
-        private string pays;
 
         public string Pays
         {
             get { return pays; }
             set { pays = value; }
         }
+
+        public string CodePostal
+        {
+            get { return codePostal; }
+            set { codePostal = value; }
+        }
+        #endregion
+
+
     }
 }

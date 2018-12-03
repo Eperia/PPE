@@ -14,6 +14,11 @@ namespace MegaCasting.repository
         //SqlConnection connection = new SqlConnection("Server=B02-11;Database=megacasting;User Id=sa;Password=SQL2014");
         private static SqlConnection connection = new SqlConnection("Server=localhost;Database=megacasting;Trusted_Connection=True;");
 
+        /// <summary>
+        /// Récupère toutes les données de la table "Metier"
+        /// Utilise la procédure "SelectMetier"
+        /// </summary>
+        /// <returns> renvoie une List<Metier> </returns>
         public List<Metier> Select()
         {
             List<Metier> metiers = new List<Metier>();
@@ -50,6 +55,11 @@ namespace MegaCasting.repository
             return metiers;
         }
 
+        /// <summary>
+        /// Insert les données dans la table "Metier" et retourne l'id insérer
+        /// Utilise la procédure "InsertMetier"
+        /// </summary>
+        /// <returns> renvoie un Int64 </returns>
         public Int64 Insert(Metier metier)
         {
             Int64 id = 0;
@@ -80,6 +90,11 @@ namespace MegaCasting.repository
 
         }
 
+        /// <summary>
+        /// Mise à jour de la table "Metier"
+        /// Utilise la procédure "UpdateMetier"
+        /// </summary>
+        /// <returns></returns>
         public void Update(Metier metier)
         {
             try
@@ -108,6 +123,11 @@ namespace MegaCasting.repository
 
         }
 
+        /// <summary>
+        /// supprimes les donnés qui sont lié a l'id de la table "Metier" fournis en paramètre
+        /// Utilise la procédure "DeleteMetier"
+        /// </summary>
+        /// <returns></returns>
         public void Delete(Int64 Id)
         {
             try

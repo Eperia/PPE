@@ -13,6 +13,11 @@ namespace MegaCasting.repository
     {
         private static SqlConnection connection = new SqlConnection("Server=localhost;Database=megacasting;Trusted_Connection=True;");
 
+        /// <summary>
+        /// Récupère toutes les données de la table "PackCasting"
+        /// Utilise la procédure "SelectPackCasting"
+        /// </summary>
+        /// <returns> renvoie une List<Pack> </returns>
         internal List<Pack> Select()
         {
             List<Pack> packs = new List<Pack>();
@@ -53,6 +58,11 @@ namespace MegaCasting.repository
             return packs;
         }
 
+        /// <summary>
+        /// Insert les données dans la table "PackCasting" et retourne l'id insérer
+        /// Utilise la procédure "InsertPackCasting"
+        /// </summary>
+        /// <returns> renvoie un Int64 </returns>
         public Int64 Insert(Pack pack)
         {
             Int64 id = 0;
@@ -87,6 +97,11 @@ namespace MegaCasting.repository
 
         }
 
+        /// <summary>
+        /// Mise à jour de la table "PackCasting"
+        /// Utilise la procédure "UpdatePack"
+        /// </summary>
+        /// <returns></returns>
         public void Update(Pack pack)
         {
             try
@@ -127,6 +142,11 @@ namespace MegaCasting.repository
 
         }
 
+        /// <summary>
+        /// supprimes les donnés qui sont lié a l'id de la table "PackCasting" fournis en paramètre
+        /// Utilise la procédure "DeleteDomaineMetier"
+        /// </summary>
+        /// <returns></returns>
         public void Delete(Int64 Id)
         {
             try
@@ -152,37 +172,6 @@ namespace MegaCasting.repository
 
 
         }
-        public bool VerifDomaineMetier_Metier(Int64 _Id)
-        {
-            bool isTrue = false;
-            Int64 id = 0;
-            try
-            {
-                SqlCommand commande = new SqlCommand("VerifDomaineMetier_Metier", connection);
-                commande.CommandType = CommandType.StoredProcedure;
 
-                commande.Parameters.Add("@id", SqlDbType.BigInt).Value = _Id;
-                commande.Parameters.Add("@IdReturn", SqlDbType.Int).Direction = ParameterDirection.Output;
-
-
-                connection.Open();
-
-                SqlDataReader dataReader = commande.ExecuteReader();
-                id = Convert.ToInt64(commande.Parameters["@IdReturn"].Value);
-
-                connection.Close();
-                if (0 == id)
-                {
-                    isTrue = true;
-                }
-            }
-            catch (Exception)
-            {
-                ErreurBDD erreurBDD = new ErreurBDD();
-                erreurBDD.ShowDialog();
-            }
-
-            return isTrue;
-        }
     }
 }

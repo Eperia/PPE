@@ -6,9 +6,18 @@ using System.Threading.Tasks;
 
 namespace MegaCasting.Class
 {
-   public class DomaineMetier
+
+
+    public class DomaineMetier
     {
+        #region champs
         private Int64 id;
+        private string nom;
+        #endregion
+
+        #region propriétés
+
+
 
         public Int64 Id
         {
@@ -16,13 +25,12 @@ namespace MegaCasting.Class
             set { id = value; }
         }
 
-        private string nom;
 
         public string Nom
         {
             get { return nom; }
             set { nom = value; }
         }
-
+        #endregion
     }
 }

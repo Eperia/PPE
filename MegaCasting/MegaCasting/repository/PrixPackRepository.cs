@@ -13,6 +13,11 @@ namespace MegaCasting.repository
     {
         private static SqlConnection connection = new SqlConnection("Server=localhost;Database=megacasting;Trusted_Connection=True;");
 
+        /// <summary>
+        /// Récupère toutes les données de la table "PrixPack"
+        /// Utilise la procédure "SelectPrixPack"
+        /// </summary>
+        /// <returns> renvoie un PrixPack </returns>
         internal PrixPack Select(Int64 _Id)
         {
             PrixPack prixPack = new PrixPack();
@@ -53,6 +58,11 @@ namespace MegaCasting.repository
             return prixPack;
         }
 
+        /// <summary>
+        /// Insert les données dans la table "PrixPack"
+        /// Utilise la procédure "InsertPrixPack"
+        /// </summary>
+        /// <returns></returns>
         internal void Insert(Pack pack, long id)
         {
                 try

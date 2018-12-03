@@ -22,12 +22,18 @@ namespace MegaCasting
     {
         List<Professionnel> professionnels = new List<Professionnel>();
         ProfessionnelRepository professionnelRepository = new ProfessionnelRepository();
+
         public GestionProfessionnel()
         {
             InitializeComponent();
 
             this.reload();
         }
+
+        /// <summary>
+        /// récupère la valeur de professionnelRepository.Select() et la stock dans la variable professionnels (List<Professionnel>)
+        /// ajoute la variable dans la ListView "lvUsers" et ensuite la refresh
+        /// </summary>
         public void reload()
         {
             professionnels = professionnelRepository.Select();
@@ -35,21 +41,24 @@ namespace MegaCasting
             lvUsers.Items.Refresh();
 
         }
+
+        /// <summary>
+        /// Vérifie que l'item sélectionner n'est pas faux
+        /// puis créer un UC InformationProfessionnel et l'ajouté à un StackPanel
+        /// </summary>
         private void lvUsers_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (this.lvUsers.SelectedIndex != -1 && this.lvUsers.SelectedIndex < professionnels.Count)
             {
                 STKPinformationPartenaire.Children.Clear();
-                InformationProfessionnel informationPartenaire = new InformationProfessionnel( this, false, professionnels[lvUsers.SelectedIndex]);
+                InformationProfessionnel informationPartenaire = new InformationProfessionnel(this, false, professionnels[lvUsers.SelectedIndex]);
                 STKPinformationPartenaire.Children.Add(informationPartenaire);
             }
-
-
-
-
-
         }
 
+        /// <summary>
+        /// puis créer un UC InformationProfessionnel et l'ajouté à un StackPanel
+        /// </summary>
         private void Ajouter_Click(object sender, RoutedEventArgs e)
         {
             STKPinformationPartenaire.Children.Clear();
@@ -58,6 +67,11 @@ namespace MegaCasting
 
         }
 
+        /// <summary>
+        /// Vérifie que l'item sélectionner n'est pas faux
+        /// supprime dans la BDD le professionnel sélectionner
+        /// et clear le StackPanel
+        /// </summary>
         private void Supprimer_Click(object sender, RoutedEventArgs e)
         {
             if (lvUsers.SelectedIndex >= 0 && lvUsers.SelectedIndex < professionnels.Count)

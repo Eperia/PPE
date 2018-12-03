@@ -14,16 +14,17 @@ namespace MegaCasting.repository
         SqlConnection connection = new SqlConnection("Server=localhost;Database=megacasting;Trusted_Connection=True;");
         //SqlConnection connection = new SqlConnection("Server=B02-11;Database=megacasting;User Id=sa;Password=SQL2014");
 
+        /// <summary>
+        /// Récupère toutes les données de la table "Partenaire"
+        /// Utilise la procédure "SelectPartenaire"
+        /// </summary>
+        /// <returns> renvoie une List<Partenaire> </returns>
         public List<Partenaire> Select()
         {
             List<Partenaire> partenaires = new List<Partenaire>();
 
             try
             {
-
-
-
-
                 SqlCommand commande = new SqlCommand("SelectPartenaire", connection);
                 commande.CommandType = CommandType.StoredProcedure;
 
@@ -42,9 +43,8 @@ namespace MegaCasting.repository
                     partenaire.Rue = dataReader.GetString(4);
                     partenaire.Ville = dataReader.GetString(5);
                     partenaire.CodePostal = dataReader.GetString(6);
-                    
                     partenaire.Pays = dataReader.GetString(7);
-                    partenaire.Email = dataReader.GetString(7);
+                    partenaire.Email = dataReader.GetString(8);
 
 
 
@@ -65,6 +65,11 @@ namespace MegaCasting.repository
             return partenaires;
         }
 
+        /// <summary>
+        /// Insert les données dans la table "Partenaire"
+        /// Utilise la procédure "InsertPartenaire"
+        /// </summary>
+        /// <returns></returns>
         public void Insert(Partenaire partenaire)
         {
             try
@@ -84,8 +89,6 @@ namespace MegaCasting.repository
                 commande.Parameters.Add("@CodePostal", SqlDbType.NVarChar).Value = partenaire.CodePostal;
                 commande.Parameters.Add("@Pays", SqlDbType.NVarChar).Value = partenaire.Pays;
                 commande.Parameters.Add("@email", SqlDbType.NVarChar).Value = partenaire.Email;
-
-                partenaire.Mdp = "test";
                 commande.Parameters.Add("@mdp", SqlDbType.NVarChar).Value = MD5Sample.cryptage(partenaire.Mdp);
 
 
@@ -102,6 +105,11 @@ namespace MegaCasting.repository
 
         }
 
+        /// <summary>
+        /// Mise à jour de la table "Partenaire"
+        /// Utilise la procédure "UpdatePartenaire"
+        /// </summary>
+        /// <returns></returns>
         public void Update(Partenaire partenaire)
         {
             try
@@ -138,6 +146,11 @@ namespace MegaCasting.repository
 
         }
 
+        /// <summary>
+        /// supprimes les donnés qui sont lié a l'id de la table "Partenaire" fournis en paramètre
+        /// Utilise la procédure "DeletePartenaire"
+        /// </summary>
+        /// <returns></returns>
         public void Delete(Int64 Id)
         {
             try

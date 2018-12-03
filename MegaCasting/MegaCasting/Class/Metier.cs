@@ -8,14 +8,20 @@ namespace MegaCasting.Class
 {
     public class Metier
     {
+        #region Champs
         private Int64 id;
+        private string nom;
+        private Int64 id_DomaineMetier;
+        #endregion
+
+        #region propriétés
+
 
         public Int64 Id
         {
             get { return id; }
             set { id = value; }
         }
-        private string nom;
 
         public string Nom
         {
@@ -23,15 +29,14 @@ namespace MegaCasting.Class
             set { nom = value; }
         }
 
-        private Int64 id_DomaineMetier;
 
         public Int64 Id_DomaineMetier
         {
             get { return id_DomaineMetier; }
             set { id_DomaineMetier = value; }
         }
+        #endregion
 
-       
 
     }
 }

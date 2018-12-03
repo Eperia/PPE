@@ -31,6 +31,10 @@ namespace MegaCasting
 
 
         }
+        /// <summary>
+        /// récupère la valeur de partenaireRepository.Select() et la stock dans la variable partenaires (List<Partenaire>)
+        /// ajoute la variable dans la ListView "lvUsers" et ensuite la refresh
+        /// </summary>
         public void reload() {
             partenaires = partenaireRepository.Select();
             lvUsers.ItemsSource = partenaires;
@@ -38,6 +42,10 @@ namespace MegaCasting
 
         }
 
+        /// <summary>
+        /// Vérifie que l'item sélectionner n'est pas faux
+        /// puis créer un UC InformationPartenaire et l'ajouté à un StackPanel
+        /// </summary>
         private void lvUsers_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (this.lvUsers.SelectedIndex  != -1 && this.lvUsers.SelectedIndex < partenaires.Count)
@@ -54,6 +62,9 @@ namespace MegaCasting
 
         }
 
+        /// <summary>
+        /// puis créer un UC InformationPartenaire et l'ajouté à un StackPanel
+        /// </summary>
         private void button_Ajouter(object sender, RoutedEventArgs e)
         {
             STKPinformationPartenaire.Children.Clear();
@@ -63,16 +74,18 @@ namespace MegaCasting
 
         }
 
+        /// <summary>
+        /// Vérifie que l'item sélectionner n'est pas faux
+        /// supprime dans la BDD le partenaire sélectionner
+        /// et clear le StackPanel
+        /// </summary>
         private void Supprimer_Click(object sender, RoutedEventArgs e)
         {
-            
-      
             if (lvUsers.SelectedIndex >=0 && lvUsers.SelectedIndex < partenaires.Count)
             {
                 partenaireRepository.Delete(partenaires[lvUsers.SelectedIndex].Id);
                 this.reload();
                 STKPinformationPartenaire.Children.Clear();
-                
             }
 
         }

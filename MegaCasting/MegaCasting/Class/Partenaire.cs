@@ -8,15 +8,29 @@ namespace MegaCasting.Class
 {
     public class Partenaire
     {
-        private Int64 id;
 
+        #region Champs
+        private Int64 id;
+        private string libelle;
+        private string url;
+        private string telephone;
+        private string fax;
+        private string mdp;
+        private string rue;
+        private string ville;
+        private string codePostal;
+        private string pays;
+        private string email;
+
+        #endregion
+
+        #region Propriétés
         public Int64 Id
         {
             get { return id; }
             set { id = value; }
         }
 
-        private string libelle;
 
         public string Libelle
         {
@@ -24,7 +38,6 @@ namespace MegaCasting.Class
             set { libelle = value; }
         }
 
-        private string url;
 
         public string URL
         {
@@ -33,14 +46,12 @@ namespace MegaCasting.Class
         }
 
 
-        private string telephone;
 
         public string Telephone
         {
             get { return telephone; }
             set { telephone = value; }
         }
-        private string fax;
 
         public string Fax
         {
@@ -48,7 +59,6 @@ namespace MegaCasting.Class
             set { fax = value; }
         }
 
-        private string mdp;
 
         public string Mdp
         {
@@ -56,7 +66,6 @@ namespace MegaCasting.Class
             set { mdp = value; }
         }
 
-        private string rue;
 
         public string Rue
         {
@@ -64,34 +73,32 @@ namespace MegaCasting.Class
             set { rue = value; }
         }
 
-        private string ville;
 
         public string Ville
         {
             get { return ville; }
             set { ville = value; }
         }
-        private string pays;
 
         public string Pays
         {
             get { return pays; }
             set { pays = value; }
         }
-        private string codePostal;
 
         public string CodePostal
         {
             get { return codePostal; }
             set { codePostal = value; }
         }
-        private string email;
 
         public string Email
         {
             get { return email; }
             set { email = value; }
         }
+        #endregion
+
 
 
     }

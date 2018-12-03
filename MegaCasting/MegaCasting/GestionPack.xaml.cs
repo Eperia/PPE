@@ -27,6 +27,10 @@ namespace MegaCasting
             InitializeComponent();
             reload();
         }
+        /// <summary>
+        /// Créer pour chaque domaine pack un UC qui donne en paramètre: null et le pack
+        /// Puis refresh la listeBox "listBox_Pack"
+        /// </summary>
         public void reload()
         {
             foreach (Pack pack in packRepository.Select())
@@ -37,9 +41,13 @@ namespace MegaCasting
 
         }
 
+        /// <summary>
+        /// instancie l'UC et fournis la listeBox "listBox_Pack"
+        /// ajoute l'UC au StackPanel "STKPinformationPack"
+        /// </summary>
         private void BtAjout_Click(object sender, RoutedEventArgs e)
         {
-            InformationPack informationPack= new InformationPack(this.listBox_Pack);
+            InformationPack informationPack = new InformationPack(this.listBox_Pack);
             STKPinformationPack.Children.Add(informationPack);
 
         }
