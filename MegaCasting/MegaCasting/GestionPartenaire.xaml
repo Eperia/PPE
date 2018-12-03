@@ -17,8 +17,9 @@
           ScrollViewer.CanContentScroll="False" MouseDoubleClick="lvUsers_MouseDoubleClick">
             <ListView.View>
                 <GridView >
-                    <GridViewColumn Header="libelle" Width="50" DisplayMemberBinding="{Binding Libelle}" />
-                    <GridViewColumn Header="adresse" Width="150" DisplayMemberBinding="{Binding Adresse}" />
+                    <GridViewColumn Header="Libelle" Width="50" DisplayMemberBinding="{Binding Libelle}" />
+                    <GridViewColumn Header="Rue" Width="150" DisplayMemberBinding="{Binding Rue}" />
+                    <GridViewColumn Header="Ville" Width="150" DisplayMemberBinding="{Binding Ville}" />
                     <GridViewColumn Header="Tel" Width="120" DisplayMemberBinding="{Binding Telephone}"/>
                 </GridView>
             </ListView.View>

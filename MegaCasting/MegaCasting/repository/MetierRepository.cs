@@ -11,8 +11,8 @@ namespace MegaCasting.repository
 {
     class MetierRepository
     {
-        SqlConnection connection = new SqlConnection("Server=B02-11;Database=megacasting;User Id=sa;Password=SQL2014");
-
+        //SqlConnection connection = new SqlConnection("Server=B02-11;Database=megacasting;User Id=sa;Password=SQL2014");
+        private static SqlConnection connection = new SqlConnection("Server=localhost;Database=megacasting;Trusted_Connection=True;");
 
         public List<Metier> Select()
         {
@@ -50,8 +50,9 @@ namespace MegaCasting.repository
             return metiers;
         }
 
-        public void Insert(Metier metier)
+        public Int64 Insert(Metier metier)
         {
+            Int64 id = 0;
             try
             {
 
@@ -61,19 +62,21 @@ namespace MegaCasting.repository
 
                 commande.Parameters.Add("@Nom", SqlDbType.NVarChar).Value = metier.Nom;
                 commande.Parameters.Add("@Id_DomaineMetier", SqlDbType.NVarChar).Value = metier.Id_DomaineMetier;
+                commande.Parameters.Add("@IdReturn", SqlDbType.Int).Direction = ParameterDirection.Output;
+
 
                 connection.Open();
 
                 SqlDataReader dataReader = commande.ExecuteReader();
-
+                id = Convert.ToInt64(commande.Parameters["@IdReturn"].Value);
                 connection.Close();
             }
-            catch (Exception)
+            catch (Exception exeption)
             {
                 ErreurBDD erreurBDD = new ErreurBDD();
                 erreurBDD.ShowDialog();
             }
-
+            return id;
 
         }
 
@@ -92,14 +95,14 @@ namespace MegaCasting.repository
                 SqlDataReader dataReader = commande.ExecuteReader();
 
 
-                connection.Close();
+                
             }
             catch (Exception test) 
             {
                 ErreurBDD erreurBDD = new ErreurBDD();
                 erreurBDD.ShowDialog();
             }
-
+            connection.Close();
 
 
 
@@ -120,7 +123,7 @@ namespace MegaCasting.repository
 
                 connection.Close();
             }
-            catch (Exception)
+            catch (Exception test)
             {
                 ErreurBDD erreurBDD = new ErreurBDD();
                 erreurBDD.ShowDialog();

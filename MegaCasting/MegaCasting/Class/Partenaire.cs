@@ -32,13 +32,6 @@ namespace MegaCasting.Class
             set { url = value; }
         }
 
-        private string adresse;
-
-        public string Adresse
-        {
-            get { return adresse; }
-            set { adresse = value; }
-        }
 
         private string telephone;
 
@@ -55,12 +48,51 @@ namespace MegaCasting.Class
             set { fax = value; }
         }
 
-       public Partenaire() {
-            libelle = "";
-            adresse = "";
-            url = "";
-            adresse = "";
+        private string mdp;
+
+        public string Mdp
+        {
+            get { return mdp; }
+            set { mdp = value; }
         }
+
+        private string rue;
+
+        public string Rue
+        {
+            get { return rue; }
+            set { rue = value; }
+        }
+
+        private string ville;
+
+        public string Ville
+        {
+            get { return ville; }
+            set { ville = value; }
+        }
+        private string pays;
+
+        public string Pays
+        {
+            get { return pays; }
+            set { pays = value; }
+        }
+        private string codePostal;
+
+        public string CodePostal
+        {
+            get { return codePostal; }
+            set { codePostal = value; }
+        }
+        private string email;
+
+        public string Email
+        {
+            get { return email; }
+            set { email = value; }
+        }
+
 
     }
 }

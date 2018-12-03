@@ -68,12 +68,35 @@ namespace MegaCasting.repository
             set { fax = value; }
         }
 
-        public Professionnel()
+        private string mdp;
+
+        public string Mdp
         {
-            libelle = "";
-            adresse = "";
-            url = "";
-            adresse = "";
+            get { return mdp; }
+            set { mdp = value; }
+        }
+
+        private string rue;
+
+        public string Rue
+        {
+            get { return rue; }
+            set { rue = value; }
+        }
+
+        private string ville;
+
+        public string Ville
+        {
+            get { return ville; }
+            set { ville = value; }
+        }
+        private string pays;
+
+        public string Pays
+        {
+            get { return pays; }
+            set { pays = value; }
         }
     }
 }

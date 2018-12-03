@@ -23,11 +23,6 @@ namespace MegaCasting.Class
             set { nom = value; }
         }
 
-        public Metier()
-        {
-            this.id = 1;
-            this.nom = "test";
-        }
         private Int64 id_DomaineMetier;
 
         public Int64 Id_DomaineMetier
@@ -35,6 +30,8 @@ namespace MegaCasting.Class
             get { return id_DomaineMetier; }
             set { id_DomaineMetier = value; }
         }
+
+       
 
     }
 }

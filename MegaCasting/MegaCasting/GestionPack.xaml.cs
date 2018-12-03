@@ -17,31 +17,30 @@ using System.Windows.Shapes;
 namespace MegaCasting
 {
     /// <summary>
-    /// Logique d'interaction pour GestionMetier.xaml
+    /// Logique d'interaction pour GestionPack.xaml
     /// </summary>
-    public partial class GestionMetier : Window
+    public partial class GestionPack : Window
     {
-        private MetierRepository metierRepository = new MetierRepository();
-
-        public GestionMetier()
+        private PackRepository packRepository = new PackRepository();
+        public GestionPack()
         {
             InitializeComponent();
             reload();
         }
         public void reload()
         {
-            foreach (Metier metier in metierRepository.Select())
+            foreach (Pack pack in packRepository.Select())
             {
-                listBox_Metier.Items.Add(new InformationMetier(null, metier));
+                listBox_Pack.Items.Add(new InformationPack(null, pack));
             }
-            listBox_Metier.Items.Refresh();
+            listBox_Pack.Items.Refresh();
 
         }
 
         private void BtAjout_Click(object sender, RoutedEventArgs e)
         {
-            InformationMetier informationMetier = new InformationMetier(this.listBox_Metier);
-            STKPinformationMetier.Children.Add(informationMetier);
+            InformationPack informationPack= new InformationPack(this.listBox_Pack);
+            STKPinformationPack.Children.Add(informationPack);
 
         }
     }

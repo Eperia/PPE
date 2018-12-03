@@ -25,8 +25,6 @@ namespace MegaCasting
         PartenaireRepository partenaireRepository = new PartenaireRepository();
         public GestionPartenaire()
         {
-            // partenaires = partenaireRepository.Select();
-
             InitializeComponent();
 
             this.reload();

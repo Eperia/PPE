@@ -1,26 +1,25 @@
-﻿using MegaCasting.Class;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MegaCasting.Class;
 
 namespace MegaCasting.repository
 {
-    class DomaineMetierRepository
+    class PackRepository
     {
-       // SqlConnection connection = new SqlConnection("Server=B02-11;Database=megacasting;User Id=sa;Password=SQL2014");
-        SqlConnection connection = new SqlConnection("Server=localhost;Database=megacasting;Trusted_Connection=True;");
+        private static SqlConnection connection = new SqlConnection("Server=localhost;Database=megacasting;Trusted_Connection=True;");
 
-        public List<DomaineMetier> Select()
+        internal List<Pack> Select()
         {
-            List<DomaineMetier> domaineMetiers = new List<DomaineMetier>();
+            List<Pack> packs = new List<Pack>();
 
             try
             {
-                SqlCommand commande = new SqlCommand("SelectDomaineMetier", connection);
+                SqlCommand commande = new SqlCommand("SelectPackCasting", connection);
                 commande.CommandType = CommandType.StoredProcedure;
 
                 connection.Open();
@@ -30,43 +29,18 @@ namespace MegaCasting.repository
                 while (dataReader.Read())
                 {
 
-                    DomaineMetier domaineMetier = new DomaineMetier();
+                    Pack pack = new Pack();
+                    PrixPackRepository prixPackRepository = new PrixPackRepository();
 
 
-                    domaineMetier.Id = dataReader.GetInt64(0);
-                    domaineMetier.Nom = dataReader.GetString(1);
+                    pack.ID = dataReader.GetInt64(0);
+                    pack.Libelle = dataReader.GetString(1);
+
+                    pack.PrixPack = prixPackRepository.Select(pack.ID);
+                    pack.NbrPoste = dataReader.GetInt32(2);
 
 
-                    domaineMetiers.Add(domaineMetier);
-                }
-
-                connection.Close();
-            }
-            catch (Exception)
-            {
-                ErreurBDD erreurBDD = new ErreurBDD();
-                erreurBDD.ShowDialog();
-            }
-            return domaineMetiers;
-        }
-        public Int64 SelectId(string nom)
-        {
-            Int64 idDomaineMetier = 0;
-            try
-            {
-                SqlCommand commande = new SqlCommand("SelectIdDomaineMetier", connection);
-                commande.CommandType = CommandType.StoredProcedure;
-
-                commande.Parameters.Add("@Nom", SqlDbType.NVarChar).Value = nom;
-
-                connection.Open();
-
-                SqlDataReader dataReader = commande.ExecuteReader();
-
-                while (dataReader.Read())
-                {
-
-                    idDomaineMetier = dataReader.GetInt64(0);
+                    packs.Add(pack);
                 }
 
                 connection.Close();
@@ -76,49 +50,21 @@ namespace MegaCasting.repository
                 ErreurBDD erreurBDD = new ErreurBDD();
                 erreurBDD.ShowDialog();
             }
-            return idDomaineMetier;
-        }
-        public string SelectName(Int64 id)
-        {
-            string name = "";
-            try
-            {
-                SqlCommand commande = new SqlCommand("SelectNameDomaineMetier", connection);
-                commande.CommandType = CommandType.StoredProcedure;
-
-                commande.Parameters.Add("@id", SqlDbType.NVarChar).Value = id;
-
-                connection.Open();
-
-                SqlDataReader dataReader = commande.ExecuteReader();
-
-                while (dataReader.Read())
-                {
-
-                    name = dataReader.GetString(0);
-                }
-
-                connection.Close();
-            }
-            catch (Exception test)
-            {
-                ErreurBDD erreurBDD = new ErreurBDD();
-                erreurBDD.ShowDialog();
-            }
-            return name;
+            return packs;
         }
 
-        public Int64  Insert(DomaineMetier domaineMetier)
+        public Int64 Insert(Pack pack)
         {
             Int64 id = 0;
             try
             {
-
-
-                SqlCommand commande = new SqlCommand("InsertDomaineMetier", connection);
+                SqlCommand commande = new SqlCommand("InsertPackCasting", connection);
                 commande.CommandType = CommandType.StoredProcedure;
-                
-                commande.Parameters.Add("@nom", SqlDbType.NVarChar).Value = domaineMetier.Nom;
+
+                commande.Parameters.Add("@nom", SqlDbType.NVarChar).Value = pack.Libelle;
+               // commande.Parameters.Add("@prix", SqlDbType.Float).Value = pack.Prix; // repositoryPrixPack
+                commande.Parameters.Add("@nbrPoste", SqlDbType.Int).Value = pack.NbrPoste;
+
                 commande.Parameters.Add("@IdReturn", SqlDbType.Int).Direction = ParameterDirection.Output;
 
 
@@ -128,6 +74,9 @@ namespace MegaCasting.repository
                 id = Convert.ToInt64(commande.Parameters["@IdReturn"].Value);
 
                 connection.Close();
+                PrixPackRepository prixPackRepository = new PrixPackRepository();
+
+                prixPackRepository.Insert(pack, id);
             }
             catch (Exception test)
             {
@@ -138,15 +87,26 @@ namespace MegaCasting.repository
 
         }
 
-        public void Update(DomaineMetier domaineMetier)
+        public void Update(Pack pack)
         {
             try
             {
-                SqlCommand commande = new SqlCommand("UpdateDomaineMetier", connection);
+                SqlCommand commande = new SqlCommand("UpdatePack", connection);
                 commande.CommandType = CommandType.StoredProcedure;
 
-                commande.Parameters.Add("@id", SqlDbType.BigInt).Value = domaineMetier.Id;
-                commande.Parameters.Add("@nom", SqlDbType.NVarChar).Value = domaineMetier.Nom;
+                commande.Parameters.Add("@id", SqlDbType.BigInt).Value = pack.ID;
+                commande.Parameters.Add("@nom", SqlDbType.NVarChar).Value = pack.Libelle;
+                PrixPackRepository prixPackRepository = new PrixPackRepository();
+                if (prixPackRepository.Select(pack.ID).Prix == pack.PrixPack.Prix)
+                {
+                    commande.Parameters.Add("@prix", SqlDbType.Float).Value = 0;
+                }
+                else
+                {
+                    commande.Parameters.Add("@prix", SqlDbType.Float).Value = pack.PrixPack.Prix;
+
+                }
+                commande.Parameters.Add("@nbrPoste", SqlDbType.Int).Value = pack.NbrPoste;
                 connection.Open();
 
                 SqlDataReader dataReader = commande.ExecuteReader();
@@ -159,6 +119,7 @@ namespace MegaCasting.repository
                 ErreurBDD erreurBDD = new ErreurBDD();
                 erreurBDD.ShowDialog();
                 connection.Close();
+
             }
 
 
@@ -191,7 +152,8 @@ namespace MegaCasting.repository
 
 
         }
-        public bool VerifDomaineMetier_Metier(Int64 _Id) {
+        public bool VerifDomaineMetier_Metier(Int64 _Id)
+        {
             bool isTrue = false;
             Int64 id = 0;
             try
@@ -209,7 +171,7 @@ namespace MegaCasting.repository
                 id = Convert.ToInt64(commande.Parameters["@IdReturn"].Value);
 
                 connection.Close();
-                if ( 0 == id)
+                if (0 == id)
                 {
                     isTrue = true;
                 }

@@ -56,8 +56,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Class\DomaineMetier.cs" />
+    <Compile Include="Class\MD5Sample.cs" />
     <Compile Include="Class\Metier.cs" />
+    <Compile Include="Class\Pack.cs" />
     <Compile Include="Class\Partenaire.cs" />
+    <Compile Include="Class\PrixPack.cs" />
     <Compile Include="Class\Professionnel.cs" />
     <Compile Include="ErreurBDD.xaml.cs">
       <DependentUpon>ErreurBDD.xaml</DependentUpon>
@@ -65,21 +68,38 @@
     <Compile Include="ErreurSaisie.xaml.cs">
       <DependentUpon>ErreurSaisie.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ErreurSuppression.xaml.cs">
+      <DependentUpon>ErreurSuppression.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GestionDomaineMetier.xaml.cs">
+      <DependentUpon>GestionDomaineMetier.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GestionMetier.xaml.cs">
       <DependentUpon>GestionMetier.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GestionPack.xaml.cs">
+      <DependentUpon>GestionPack.xaml</DependentUpon>
     </Compile>
     <Compile Include="GestionProfessionnel.xaml.cs">
       <DependentUpon>GestionProfessionnel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="InformationDomaineMetier.xaml.cs">
+      <DependentUpon>InformationDomaineMetier.xaml</DependentUpon>
+    </Compile>
     <Compile Include="InformationMetier.xaml.cs">
       <DependentUpon>InformationMetier.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InformationPack.xaml.cs">
+      <DependentUpon>InformationPack.xaml</DependentUpon>
     </Compile>
     <Compile Include="InformationProfessionnel.xaml.cs">
       <DependentUpon>InformationProfessionnel.xaml</DependentUpon>
     </Compile>
     <Compile Include="repository\DomaineMetierRepository.cs" />
     <Compile Include="repository\MetierRepository.cs" />
+    <Compile Include="repository\PackRepository.cs" />
     <Compile Include="repository\PartenaireRepository.cs" />
+    <Compile Include="repository\PrixPackRepository.cs" />
     <Compile Include="repository\ProfessionnelRepository.cs" />
     <Page Include="ErreurBDD.xaml">
       <SubType>Designer</SubType>
@@ -89,7 +109,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ErreurSuppression.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GestionDomaineMetier.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GestionMetier.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GestionPack.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -101,7 +133,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="InformationDomaineMetier.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="InformationMetier.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InformationPack.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

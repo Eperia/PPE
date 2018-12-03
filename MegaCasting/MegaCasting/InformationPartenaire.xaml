@@ -9,15 +9,25 @@
     <Grid>
         <TextBox x:Name="TxtBlibelle" HorizontalAlignment="Left" Height="23" Margin="10,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="212" Text="libelle"/>
         <Label x:Name="Lblibelle" Content="libelle" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top" Width="120" Background="#FFE41818"/>
-        <Label x:Name="LbAdresse" Content="adresse" HorizontalAlignment="Left" Margin="10,101,0,0" VerticalAlignment="Top" Width="120" Background="#FF8B3030"/>
-        <Label x:Name="LbFax" Content="Fax" HorizontalAlignment="Left" Margin="260,67,0,0" VerticalAlignment="Top" Width="120" Background="#FFA81B1B"/>
-        <TextBox x:Name="TxtBUrl"  HorizontalAlignment="Left" Height="23" Margin="10,210,0,0" TextWrapping="Wrap" Text="URL" VerticalAlignment="Top" Width="212"/>
-        <TextBox x:Name="TxtBAdresse" HorizontalAlignment="Left" Height="23" Margin="10,132,0,0" TextWrapping="Wrap" Text="Adresse" VerticalAlignment="Top" Width="212"/>
-        <Button x:Name="BtSave" Content="Save" HorizontalAlignment="Left" Margin="142,290,0,0" VerticalAlignment="Top" Width="128" Height="33" Click="button_Click"/>
-        <TextBox x:Name="TxtTel" HorizontalAlignment="Left" Height="23" Margin="260,176,0,0" TextWrapping="Wrap" Text="téléphone" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="TxtBFax" HorizontalAlignment="Left" Height="23" Margin="260,98,0,0" TextWrapping="Wrap" Text="Fax" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="LbTel" Content="téléphone" HorizontalAlignment="Left" Margin="260,150,0,0" VerticalAlignment="Top" Width="120" Background="#FFD62B2B"/>
-        <Label x:Name="LbUrl" Content="URL" HorizontalAlignment="Left" Margin="10,184,0,0" VerticalAlignment="Top" Width="120" Background="#FFB92424"/>
+        <Label x:Name="LbARue" Content="Rue" HorizontalAlignment="Left" Margin="10,101,0,0" VerticalAlignment="Top" Width="120" Background="#FF8B3030"/>
+        <Label x:Name="LbFax" Content="Fax" HorizontalAlignment="Left" Margin="260,20,0,0" VerticalAlignment="Top" Width="120" Background="#FFA81B1B"/>
+        <TextBox x:Name="TxtBUrl"  HorizontalAlignment="Left" Height="23" Margin="10,326,0,0" TextWrapping="Wrap" Text="URL" VerticalAlignment="Top" Width="212"/>
+        <TextBox x:Name="TxtBRue" HorizontalAlignment="Left" Height="23" Margin="10,132,0,0" TextWrapping="Wrap" Text="Adresse" VerticalAlignment="Top" Width="212"/>
+        <Button x:Name="BtSave" Content="Save" HorizontalAlignment="Left" Margin="142,356,0,0" VerticalAlignment="Top" Width="128" Height="33" Click="button_Click"/>
+        <TextBox x:Name="TxtTel" HorizontalAlignment="Left" Height="23" Margin="260,132,0,0" TextWrapping="Wrap" Text="téléphone" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TxtBFax" HorizontalAlignment="Left" Height="23" Margin="260,51,0,0" TextWrapping="Wrap" Text="Fax" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="LbTel" Content="téléphone" HorizontalAlignment="Left" Margin="260,101,0,0" VerticalAlignment="Top" Width="120" Background="#FFD62B2B"/>
+        <Label x:Name="LbUrl" Content="URL" HorizontalAlignment="Left" Margin="10,300,0,0" VerticalAlignment="Top" Width="120" Background="#FFB92424"/>
+        <Label x:Name="LbVille" Content="Ville" HorizontalAlignment="Left" Margin="10,172,0,0" VerticalAlignment="Top" Width="120" Background="#FF8B3030"/>
+        <TextBox x:Name="TxtBVille" HorizontalAlignment="Left" Height="23" Margin="10,203,0,0" TextWrapping="Wrap" Text="Adresse" VerticalAlignment="Top" Width="212"/>
+        <Label x:Name="LbCodePostal" Content="Code Postal" HorizontalAlignment="Left" Margin="10,241,0,0" VerticalAlignment="Top" Width="120" Background="#FF8B3030"/>
+        <TextBox x:Name="TxtBCodePostal" HorizontalAlignment="Left" Height="23" Margin="10,272,0,0" TextWrapping="Wrap" Text="Adresse" VerticalAlignment="Top" Width="212"/>
+        <Label x:Name="LbPays" Content="Pays" HorizontalAlignment="Left" Margin="260,172,0,0" VerticalAlignment="Top" Width="88" Background="#FF8B3030"/>
+        <TextBox x:Name="TxtBPays" HorizontalAlignment="Left" Height="23" Margin="260,203,0,0" TextWrapping="Wrap" Text="Adresse" VerticalAlignment="Top" Width="130"/>
+        <Label x:Name="LbMdp" Content="Mot de passe" HorizontalAlignment="Left" Margin="260,241,0,0" VerticalAlignment="Top" Width="88" Background="#FF8B3030"/>
+        <TextBox x:Name="TxtBMdp" HorizontalAlignment="Left" Height="23" Margin="260,272,0,0" TextWrapping="Wrap" Text="Adresse" VerticalAlignment="Top" Width="130"/>
+        <TextBox x:Name="TxtBEmail"  HorizontalAlignment="Left" Height="23" Margin="260,334,0,0" TextWrapping="Wrap" Text="URL" VerticalAlignment="Top" Width="146"/>
+        <Label x:Name="LbEmail" Content="Email" HorizontalAlignment="Left" Margin="260,308,0,0" VerticalAlignment="Top" Width="83" Background="#FFB92424"/>
 
     </Grid>
 </UserControl>

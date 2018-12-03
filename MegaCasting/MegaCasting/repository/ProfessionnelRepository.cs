@@ -12,8 +12,8 @@ namespace MegaCasting.repository
     class ProfessionnelRepository
     {
 
-        SqlConnection connection = new SqlConnection("Server=B02-11;Database=megacasting;User Id=sa;Password=SQL2014");
-
+        //SqlConnection connection = new SqlConnection("Server=B02-11;Database=megacasting;User Id=sa;Password=SQL2014");
+        SqlConnection connection = new SqlConnection("Server=localhost;Database=megacasting;Trusted_Connection=True;");
         public List<Professionnel> Select()
         {
             List<Professionnel> professionnels = new List<Professionnel>();
@@ -70,6 +70,8 @@ namespace MegaCasting.repository
                 SqlCommand commande = new SqlCommand("InsertProfessionnel", connection);
                 commande.CommandType = CommandType.StoredProcedure;
 
+
+
                 commande.Parameters.Add("@libelle", SqlDbType.NVarChar).Value = professionnel.Libelle;
                 commande.Parameters.Add("@URL", SqlDbType.NVarChar).Value = professionnel.URL;
                 commande.Parameters.Add("@adresse", SqlDbType.NVarChar).Value = professionnel.Adresse;
@@ -77,7 +79,7 @@ namespace MegaCasting.repository
                 commande.Parameters.Add("@fax", SqlDbType.NVarChar).Value = professionnel.Fax;
                 commande.Parameters.Add("@email", SqlDbType.NVarChar).Value = professionnel.Email;
                 commande.Parameters.Add("@nbrPost", SqlDbType.Int).Value = professionnel.NbrPoste;
-                commande.Parameters.Add("@mdp", SqlDbType.Int).Value = 1234;
+                commande.Parameters.Add("@mdp", SqlDbType.Int).Value = MD5Sample.cryptage(professionnel.Mdp);
 
 
                 connection.Open();
