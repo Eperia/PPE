@@ -22,10 +22,12 @@ namespace MegaCasting
     /// </summary>
     public partial class InformationPack : UserControl
     {
+        #region Field
         PackRepository packRepository = new PackRepository();
         ListBox listBox;
         Pack pack = new Pack();
         bool ajout = false;
+        #endregion
 
         public InformationPack(ListBox _listBox = null, Pack _pack = null)
         {
@@ -35,7 +37,7 @@ namespace MegaCasting
             if (_pack != null)
             {
                 pack = _pack;
-                
+
                 TxtPackName.Text = pack.Libelle;
                 TxtBPackPrix.Text = pack.PrixPack.Prix.ToString();
                 TxtBPackNbrPost.Text = pack.NbrPoste.ToString();
@@ -43,12 +45,8 @@ namespace MegaCasting
             else
             {
                 ajout = true;
-                
+
             }
-
-
-
-
         }
 
         private void BtSauv_Click(object sender, RoutedEventArgs e)
@@ -59,30 +57,27 @@ namespace MegaCasting
             if (ajout)
             {
                 pack.ID = packRepository.Insert(pack);
-               
+
                 ajout = false;
                 ((StackPanel)this.Parent).Children.Clear();
                 listBox.Items.Add(this);
                 listBox.Items.Refresh();
-
-
-
             }
             else
             {
-              
                 packRepository.Update(pack);
             }
 
 
 
         }
-
+        /*
+         * Version actuel utilise pas la suppression du pack
         private void BtSupr_Click(object sender, RoutedEventArgs e)
         {
             packRepository.Delete(pack.ID);
             ((ListBox)this.Parent).Items.Remove(this);
-
         }
+        */
     }
 }

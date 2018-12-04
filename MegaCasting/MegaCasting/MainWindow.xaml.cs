@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using MegaCasting.Class;
+using MegaCasting.repository;
 
 namespace MegaCasting
 {
@@ -10,10 +11,11 @@ namespace MegaCasting
     public partial class MainWindow : Window
     {
         List<Partenaire> partenaires;
+        OffreCastingRepository offreCastingRepository = new OffreCastingRepository();
         public MainWindow()
         {
             InitializeComponent();
-            
+
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -62,6 +64,14 @@ namespace MegaCasting
             gestionPack.Show();
         }
 
-        
+        private void Reload_Click(object sender, RoutedEventArgs e)
+        {
+            List<OffreCasting> offreCastings = new List<OffreCasting>();
+            offreCastings = offreCastingRepository.Select();
+            LvCasting.ItemsSource = offreCastings;
+            LvCasting.Items.Refresh();
+
+        }
     }
 }
+

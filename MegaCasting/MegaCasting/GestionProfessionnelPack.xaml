@@ -1,0 +1,24 @@
+﻿<Window x:Class="MegaCasting.GestionProfessionnelPack"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MegaCasting"
+        mc:Ignorable="d"
+        Title="GestionProfessionnelPack" Height="510.256" Width="452.564">
+    <Grid>
+        <Button x:Name="BtAjout" Content="Ajouter" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="123" Height="30" Click="BtAjout_Click"/>
+        <ListView Margin="0,45,29,90" x:Name="lvPacks" VerticalContentAlignment="Top"  
+            ScrollViewer.VerticalScrollBarVisibility="Visible"
+            ScrollViewer.CanContentScroll="False">
+            <ListView.View>
+                <GridView >
+                    <GridViewColumn Header="Libelle" Width="50" DisplayMemberBinding="{Binding Libelle}" />
+                    <GridViewColumn Header="Prix" Width="150" DisplayMemberBinding="{Binding Prix}" />
+                    <GridViewColumn Header="Nombre de poste" Width="150" DisplayMemberBinding="{Binding NbrPoste}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</Window>

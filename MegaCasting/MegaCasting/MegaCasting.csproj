@@ -58,6 +58,7 @@
     <Compile Include="Class\DomaineMetier.cs" />
     <Compile Include="Class\MD5Sample.cs" />
     <Compile Include="Class\Metier.cs" />
+    <Compile Include="Class\OffreCasting.cs" />
     <Compile Include="Class\Pack.cs" />
     <Compile Include="Class\Partenaire.cs" />
     <Compile Include="Class\PrixPack.cs" />
@@ -83,6 +84,9 @@
     <Compile Include="GestionProfessionnel.xaml.cs">
       <DependentUpon>GestionProfessionnel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GestionProfessionnelPack.xaml.cs">
+      <DependentUpon>GestionProfessionnelPack.xaml</DependentUpon>
+    </Compile>
     <Compile Include="InformationDomaineMetier.xaml.cs">
       <DependentUpon>InformationDomaineMetier.xaml</DependentUpon>
     </Compile>
@@ -97,9 +101,11 @@
     </Compile>
     <Compile Include="repository\DomaineMetierRepository.cs" />
     <Compile Include="repository\MetierRepository.cs" />
+    <Compile Include="repository\OffreCastingRepository.cs" />
     <Compile Include="repository\PackRepository.cs" />
     <Compile Include="repository\PartenaireRepository.cs" />
     <Compile Include="repository\PrixPackRepository.cs" />
+    <Compile Include="repository\ProfessinnelPackRepository.cs" />
     <Compile Include="repository\ProfessionnelRepository.cs" />
     <Page Include="ErreurBDD.xaml">
       <SubType>Designer</SubType>
@@ -130,6 +136,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GestionProfessionnel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GestionProfessionnelPack.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

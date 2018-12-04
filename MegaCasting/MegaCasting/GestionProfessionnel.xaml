@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MegaCasting"
         mc:Ignorable="d"
-        Title="GestionProfessionnel" Height="450" Width="800">
+        Title="GestionProfessionnel" Height="662.427" Width="1093.698">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="119*"/>
@@ -17,15 +17,16 @@
             <ListView.View>
                 <GridView >
                     <GridViewColumn Header="libelle" Width="50" DisplayMemberBinding="{Binding Libelle}" />
-                    <GridViewColumn Header="adresse" Width="150" DisplayMemberBinding="{Binding Adresse}" />
+                    <GridViewColumn Header="Rue" Width="150" DisplayMemberBinding="{Binding Rue}" />
+                    <GridViewColumn Header="Ville" Width="150" DisplayMemberBinding="{Binding Ville}" />
                     <GridViewColumn Header="Tel" Width="120" DisplayMemberBinding="{Binding Telephone}"/>
                     <GridViewColumn Header="Nbr de Poste" Width="120" DisplayMemberBinding="{Binding NbrPoste}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <StackPanel Name="STKPinformationPartenaire" Grid.Column="1" HorizontalAlignment="Left" Height="399" VerticalAlignment="Top" Width="415" Margin="10,10,0,0"/>
-        <Button x:Name="Ajouter" Content="Ajouter" HorizontalAlignment="Left" Margin="10,359,0,0" VerticalAlignment="Top" Width="126" Height="43" Click="Ajouter_Click"/>
-        <Button x:Name="Supprimer" Content="Supprimer" HorizontalAlignment="Left" Margin="178,359,0,0" VerticalAlignment="Top" Width="126" Height="43" Click="Supprimer_Click"/>
+        <StackPanel Name="STKPinformationPartenaire" Grid.Column="1" HorizontalAlignment="Left" Height="555" VerticalAlignment="Top" Width="550" Margin="10,10,0,0"/>
+        <Button x:Name="Supprimer" Content="Supprimer" HorizontalAlignment="Left" Margin="157,570,0,0" VerticalAlignment="Top" Width="126" Height="43" Click="Supprimer_Click"/>
+        <Button x:Name="Ajouter" Content="Ajouter" HorizontalAlignment="Left" Margin="10,570,0,0" VerticalAlignment="Top" Width="126" Height="43" Click="Ajouter_Click"/>
 
     </Grid>
 </Window>

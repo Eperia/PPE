@@ -119,9 +119,25 @@ namespace MegaCasting.repository
         {
             try
             {
-                SqlCommand commande = new SqlCommand("UpdateProfessionnel", connection);
-                commande.CommandType = CommandType.StoredProcedure;
+                string procedure = "";
+                SqlCommand commande = new SqlCommand();
+                if (!string.IsNullOrWhiteSpace(professionnel.Mdp.ToString()))
+                {
+                    SqlCommand commandeBis = new SqlCommand("UpdateProfessionnelWithmdp", connection);
+                    commande = commandeBis;
+                    commande.Parameters.Add("@mdp", SqlDbType.NVarChar).Value = MD5Sample.cryptage(professionnel.Mdp);
 
+                }
+                else
+                {
+                    SqlCommand commandeBis = new SqlCommand("UpdateProfessionnel", connection);
+                    commande = commandeBis;
+
+
+                }
+                
+                commande.CommandType = CommandType.StoredProcedure;
+                commande.Parameters.Add("@id", SqlDbType.NVarChar).Value = professionnel.Id;
                 commande.Parameters.Add("@libelle", SqlDbType.NVarChar).Value = professionnel.Libelle;
                 commande.Parameters.Add("@URL", SqlDbType.NVarChar).Value = professionnel.URL;
                 commande.Parameters.Add("@Rue", SqlDbType.NVarChar).Value = professionnel.Rue;
@@ -132,7 +148,7 @@ namespace MegaCasting.repository
                 commande.Parameters.Add("@Pays", SqlDbType.NVarChar).Value = professionnel.Pays;
                 commande.Parameters.Add("@email", SqlDbType.NVarChar).Value = professionnel.Email;
                 commande.Parameters.Add("@nbrPost", SqlDbType.Int).Value = professionnel.NbrPoste;
-                commande.Parameters.Add("@mdp", SqlDbType.NVarChar).Value = MD5Sample.cryptage(professionnel.Mdp);
+
 
                 connection.Open();
 
@@ -141,10 +157,11 @@ namespace MegaCasting.repository
 
                 connection.Close();
             }
-            catch (Exception)
+            catch (Exception test)
             {
                 ErreurBDD erreurBDD = new ErreurBDD();
                 erreurBDD.ShowDialog();
+                connection.Close();
             }
 
 
