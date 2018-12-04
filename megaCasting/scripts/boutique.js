@@ -1,5 +1,5 @@
 function showListInfos(self, packs){
-// pour chaque offre on génère une div que l'on rajoute sur la page
+// pour chaque pack on génère une div que l'on rajoute sur la page
 	for (var i = 0; i < packs.length; i++) {
 		self.appendChild(new PacksContainer(packs[i]).container);
 	}

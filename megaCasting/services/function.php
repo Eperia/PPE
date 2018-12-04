@@ -33,7 +33,8 @@ class functions
 		return str_replace("||AUTH||", $templateAuth, $page);
 	}
 
-	private static function encodeUtf8($array){
+	// Encode en ut8 de facon itérative un tableau de donné
+	public static function encodeUtf8($array){
 		if (gettype($array) == 'array') {
 			foreach ($array as $key => $value) {
 				if (gettype($value) == 'array') {

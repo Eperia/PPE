@@ -1,7 +1,9 @@
+//Si l'offre recherché n'existe pas
 if (Offre[0] == undefined) {
 	container = document.getElementById("containerMain");
 	container.innerHTML = Page404;
 }else{
+	//Sinon on remplie la page avec ses infos
 	Offre = Offre[0];
 
 	info = document.getElementById("offre-titre");

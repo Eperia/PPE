@@ -1,8 +1,8 @@
 function showListOffres(self, offres){
 // pour chaque offre on génère une div que l'on rajoute sur la page
-	for (var i = 0; i < offres.length; i++) {
-		self.appendChild(new OffreContainer(offres[i]).container);
-	}
+for (var i = 0; i < offres.length; i++) {
+	self.appendChild(new OffreContainer(offres[i]).container);
+}
 }
 // forme de la div ajouter a la page
 function OffreContainer(offre){
@@ -47,10 +47,10 @@ function OffreContainer(offre){
 
 
 function showListCheckbox(self, info){
-// pour chaque offre on génère une div que l'on rajoute sur la page
-	for (var i = 0; i < info.length; i++) {
-		self.appendChild(new CheckboxContainer(info[i]).container);
-	}
+// pour chaque element 'Type' on génère une div que l'on rajoute dans la partie de recherche
+for (var i = 0; i < info.length; i++) {
+	self.appendChild(new CheckboxContainer(info[i]).container);
+}
 }
 // forme de la div ajouter a la page
 function CheckboxContainer(info){
@@ -76,15 +76,23 @@ function CheckboxContainer(info){
 
 
 var container = document.getElementById("ContainerOffres");
-showListOffres(container, Offres);
+// Si il n'y a pas d'offre de casting
+if (Offres[0] == undefined) {
+	container.innerHTML = Page404;
+}else{
+	//Sinon on les affichent
+	showListOffres(container, Offres);
+}
 
 var container = document.getElementById("ContainerCheckBox");
 var div = document.createElement("div");
 div.innerHTML = "Type de contrats :";
 container.appendChild(div);
+//On ajoute la liste de checkbox de type de contrats
 showListCheckbox(container, TypesContrats);
 var div = document.createElement("div");
 div.innerHTML = "Type de metiers :";
 container.appendChild(div);
+//On ajoute la liste de checkbox de type de metiers
 showListCheckbox(container, TypesMetiers);
 

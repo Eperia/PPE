@@ -32,31 +32,34 @@ function OffreContainer(offre){
 	this.__defineGetter__('container', () => div);
 }
 
-
+//Si le profil recherché n'existe pas
 if (Profil == null) {
 	container = document.getElementById("containerMain");
 	container.innerHTML = Page404;
+}else{
+	//Sinon on remplie la page avec ses infos 
+	info = document.getElementById("profil-img");
+	info.innerHTML += "<i class='fas fa-user-alt'>";
+	info = document.getElementById("profil-nom");
+	info.innerHTML += Profil.Nom;
+
+	info = document.getElementById("profil-add");
+	info.innerHTML += Profil.Adresse;
+	info = document.getElementById("profil-tel");
+	info.innerHTML += (Profil.Telephone != null)?Profil.Telephone : "Non renseigner";
+	info = document.getElementById("profil-email");
+	info.innerHTML += (Profil.Email != null)?Profil.Email : "Non renseigner";
+	info = document.getElementById("profil-fax");
+	info.innerHTML += (Profil.Fax != null)?Profil.Fax : "Non renseigner";
+	info = document.getElementById("profil-url");
+	info.innerHTML += (Profil.Url != null)?"<a href='" + Profil.Url + "'>"+ Profil.Url + "</a>" : "Non renseigner";
+
+
+	var container = document.getElementById("ContainerOffres");
+	if (Offres.length == 0) {
+		container.innerHTML = "<div class='div-empty-offres'>Ce professionnel ne recherche pas de candidat actuellement</div>"
+	}
+	showListOffres(container, Offres);
+
 }
 
-info = document.getElementById("profil-img");
-info.innerHTML += "<i class='fas fa-user-alt'>";
-info = document.getElementById("profil-nom");
-info.innerHTML += Profil.Nom;
-
-info = document.getElementById("profil-add");
-info.innerHTML += Profil.Adresse;
-info = document.getElementById("profil-tel");
-info.innerHTML += (Profil.Telephone != null)?Profil.Telephone : "Non renseigner";
-info = document.getElementById("profil-email");
-info.innerHTML += (Profil.Email != null)?Profil.Email : "Non renseigner";
-info = document.getElementById("profil-fax");
-info.innerHTML += (Profil.Fax != null)?Profil.Fax : "Non renseigner";
-info = document.getElementById("profil-url");
-info.innerHTML += (Profil.Url != null)?"<a href='" + Profil.Url + "'>"+ Profil.Url + "</a>" : "Non renseigner";
-
-
-var container = document.getElementById("ContainerOffres");
-if (Offres.length == 0) {
-	container.innerHTML = "<div class='div-empty-offres'>Ce professionnel ne recherche pas de candidat actuellement</div>"
-}
-showListOffres(container, Offres);

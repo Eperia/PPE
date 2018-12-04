@@ -1,7 +1,9 @@
+//Si l'interview et conseil recherché n'existe pas
 if (Info[0] == undefined) {
 	container = document.getElementById("containerMain");
 	container.innerHTML = Page404;
 }else{
+	//Sinon on remplie la page avec ses infos 
 	Info = Info[0];
 
 	info = document.getElementById("info-titre");

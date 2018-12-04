@@ -168,6 +168,7 @@ header > div:hover > button{
 	padding: 2vh 3vw;
 	border-radius: 5px;
 	color: gray;
+	text-align: center;
 }
 
 .errorPage > div{

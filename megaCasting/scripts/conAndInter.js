@@ -1,5 +1,5 @@
 function showListInfos(self, infos){
-// pour chaque offre on génère une div que l'on rajoute sur la page
+// pour chaque interview et conseil on génère une div que l'on rajoute sur la page
 	for (var i = 0; i < infos.length; i++) {
 		self.appendChild(new InfosContainer(infos[i]).container);
 	}
