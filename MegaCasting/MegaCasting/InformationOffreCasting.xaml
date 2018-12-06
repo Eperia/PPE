@@ -1,0 +1,39 @@
+﻿<Window x:Class="MegaCasting.InformationOffreCasting"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MegaCasting"
+        mc:Ignorable="d"
+        Title="InformationOffreCasting" Height="596.153" Width="824.36">
+    <Grid>
+
+        <Label x:Name="labelDescription" Content="Description : " HorizontalAlignment="Left" Margin="10,244,0,0" VerticalAlignment="Top" Width="97"/>
+        <TextBlock x:Name="TblDescription" HorizontalAlignment="Left" Height="239" Margin="10,275,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="796"/>
+
+        <Label x:Name="labelProfessionnel" Content="Professionnel" HorizontalAlignment="Left" Margin="153,28,0,0" VerticalAlignment="Top" Width="138"/>
+        <ComboBox x:Name="CbProfessionnel" HorizontalAlignment="Left" Margin="153,59,0,0" VerticalAlignment="Top" Width="138" DisplayMemberPath="Libelle"/>
+
+
+
+        <Label x:Name="labelDureeDiffusion" Content="durée de diffusion" HorizontalAlignment="Left" Margin="322,28,0,0" VerticalAlignment="Top" Width="138"/>
+        <TextBox x:Name="TbDureeDiffusion" HorizontalAlignment="Left" Height="23" Margin="322,59,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="138"/>
+
+        <Label x:Name="labelLocalisation" Content="Localisation" HorizontalAlignment="Left" Margin="488,28,0,0" VerticalAlignment="Top" Width="134"/>
+        <TextBox x:Name="TbLocalisation" HorizontalAlignment="Left" Height="23" Margin="488,59,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134"/>
+
+        <Label x:Name="labelEmploye" Content="Employé" HorizontalAlignment="Left" Margin="153,105,0,0" VerticalAlignment="Top" Width="138"/>
+        <ComboBox x:Name="CbEmploye" HorizontalAlignment="Left" Margin="153,137,0,0" VerticalAlignment="Top" Width="138" DisplayMemberPath="Nom" />
+        
+        <Label x:Name="labelDateDebutContrat" Content="Date début contrat" HorizontalAlignment="Left" Margin="322,105,0,0" VerticalAlignment="Top" Width="138"/>
+        <TextBox x:Name="TbDateDebutContrat" HorizontalAlignment="Left" Height="23" Margin="322,136,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="138"/>
+
+        <Label x:Name="labelTitre" Content="Titre" HorizontalAlignment="Left" Margin="262,183,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TbTitre" HorizontalAlignment="Left" Height="23" Margin="262,214,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+
+        <Button x:Name="BtSave" Content="Sauvegarder" HorizontalAlignment="Left" Margin="322,519,0,0" VerticalAlignment="Top" Width="108" Height="28" RenderTransformOrigin="1.512,7.19"/>
+
+
+
+    </Grid>
+</Window>

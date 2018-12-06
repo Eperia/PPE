@@ -15,6 +15,7 @@ namespace MegaCasting
         public MainWindow()
         {
             InitializeComponent();
+            reload();
 
         }
 
@@ -66,11 +67,21 @@ namespace MegaCasting
 
         private void Reload_Click(object sender, RoutedEventArgs e)
         {
+
+            reload();
+        }
+        public void reload()
+        {
             List<OffreCasting> offreCastings = new List<OffreCasting>();
             offreCastings = offreCastingRepository.Select();
             LvCasting.ItemsSource = offreCastings;
             LvCasting.Items.Refresh();
+        }
 
+        private void Ajouter_Click(object sender, RoutedEventArgs e)
+        {
+            InformationOffreCasting informationOffreCasting = new InformationOffreCasting();
+            informationOffreCasting.Show();
         }
     }
 }

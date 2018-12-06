@@ -67,6 +67,53 @@ namespace MegaCasting.repository
             return professionnels;
         }
 
+        public Professionnel Select(Int64 id)
+        {
+            Professionnel professionnel = new Professionnel();
+
+            try
+            {
+                SqlCommand commande = new SqlCommand("SelectOneProfessionnel", connection);
+                commande.CommandType = CommandType.StoredProcedure;
+                commande.Parameters.Add("@id", SqlDbType.BigInt).Value = id;
+
+
+                connection.Open();
+
+                SqlDataReader dataReader = commande.ExecuteReader();
+                while (dataReader.Read())
+                {
+
+                    
+                    professionnel.Id = dataReader.GetInt64(0);
+                    professionnel.Libelle = dataReader.GetString(1);
+                    professionnel.URL = dataReader.GetString(2);
+                    professionnel.Telephone = dataReader.GetString(3);
+                    professionnel.Rue = dataReader.GetString(4);
+                    professionnel.Ville = dataReader.GetString(5);
+                    professionnel.CodePostal = dataReader.GetString(6);
+                    professionnel.Pays = dataReader.GetString(7);
+                    professionnel.Email = dataReader.GetString(8);
+
+                    if (!dataReader.IsDBNull(9))
+                    {
+                        professionnel.Fax = dataReader.GetString(9);
+
+                    }
+                    professionnel.NbrPoste = dataReader.GetInt32(10);
+                }
+
+                connection.Close();
+            }
+            catch (Exception erreur)
+            {
+                ErreurBDD erreurBDD = new ErreurBDD();
+                erreurBDD.ShowDialog();
+                connection.Close();
+            }
+            return professionnel;
+        }
+
         /// <summary>
         /// Insert les données dans la table "Professionnel"
         /// Utilise la procédure "InsertProfessionnel"

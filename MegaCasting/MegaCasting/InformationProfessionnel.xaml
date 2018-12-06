@@ -31,6 +31,7 @@
         <Label x:Name="LbMdp" Content="Mot de passe" HorizontalAlignment="Left" Margin="260,241,0,0" VerticalAlignment="Top" Width="88" Background="#FF8B3030"/>
         <TextBox x:Name="TxtBMdp" HorizontalAlignment="Left" Height="23" Margin="260,272,0,0" TextWrapping="Wrap" Text="Adresse" VerticalAlignment="Top" Width="130"/>
         <Button x:Name="BtAddNbrPost" Content="+" HorizontalAlignment="Left" Height="23" Margin="135,373,0,0" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.03,-0.489" Click="BtAddNbrPost_Click"/>
+        <Button x:Name="BtHistoriquePack" Content="Historique Pack" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="10,427,0,0" Height="32" Click="BtHistoriquePack_Click"/>
 
     </Grid>
 </UserControl>

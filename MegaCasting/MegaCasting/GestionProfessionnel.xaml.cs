@@ -1,4 +1,5 @@
-﻿using MegaCasting.repository;
+﻿using MegaCasting.Class;
+using MegaCasting.repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,4 +1,5 @@
-﻿using MegaCasting.repository;
+﻿using MegaCasting.Class;
+using MegaCasting.repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -95,6 +96,12 @@ namespace MegaCasting
         {
             GestionProfessionnelPack gestionProfessionnelPack = new GestionProfessionnelPack(professionnel);
             gestionProfessionnelPack.ShowDialog();
+        }
+
+        private void BtHistoriquePack_Click(object sender, RoutedEventArgs e)
+        {
+            InformationHistoriquePack informationHistoriquePack = new InformationHistoriquePack(professionnel);
+            informationHistoriquePack.Show();
         }
     }
 }

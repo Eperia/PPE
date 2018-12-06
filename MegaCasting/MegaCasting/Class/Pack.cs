@@ -47,7 +47,6 @@ namespace MegaCasting.Class
         public Pack()
         {
             PrixPack = new PrixPack();
-
         }
         #endregion
 

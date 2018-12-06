@@ -25,9 +25,9 @@ namespace MegaCasting.repository
             {
                 SqlCommand commande = new SqlCommand("SelectPrixPack", connection);
                 commande.CommandType = CommandType.StoredProcedure;
-                commande.Parameters.Add("@id", SqlDbType.NVarChar).Value = _Id;
+                commande.Parameters.Add("@id", SqlDbType.BigInt).Value = _Id;
 
-                connection.Open();
+                    connection.Open();
 
                 SqlDataReader dataReader = commande.ExecuteReader();
 
@@ -58,6 +58,45 @@ namespace MegaCasting.repository
             return prixPack;
         }
 
+        internal PrixPack Select(Int64 _Id,DateTime _dateTime)
+        {
+            PrixPack prixPack = new PrixPack();
+
+            try
+            {
+                SqlCommand commande = new SqlCommand("SelectHistoriquePrix", connection);
+                commande.CommandType = CommandType.StoredProcedure;
+                commande.Parameters.Add("@id", SqlDbType.NVarChar).Value = _Id;
+                commande.Parameters.Add("@dt_achat", SqlDbType.DateTime).Value = _dateTime;
+
+
+                connection.Open();
+
+                SqlDataReader dataReader = commande.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+
+                    prixPack.Id = dataReader.GetInt64(0);
+                    prixPack.Prix = dataReader.GetDouble(1);
+                    prixPack.Dt_Debut = dataReader.GetDateTime(2);
+                    if (!dataReader.IsDBNull(3))
+                    {
+                        prixPack.Dt_Fin = dataReader.GetDateTime(3);
+                    }
+
+
+                }
+
+                connection.Close();
+            }
+            catch (Exception test)
+            {
+                ErreurBDD erreurBDD = new ErreurBDD();
+                erreurBDD.ShowDialog();
+            }
+            return prixPack;
+        }
         /// <summary>
         /// Insert les données dans la table "PrixPack"
         /// Utilise la procédure "InsertPrixPack"

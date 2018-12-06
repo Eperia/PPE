@@ -27,6 +27,7 @@ namespace MegaCasting.repository
                 SqlCommand commande = new SqlCommand("SelectPackCasting", connection);
                 commande.CommandType = CommandType.StoredProcedure;
 
+
                 connection.Open();
 
                 SqlDataReader dataReader = commande.ExecuteReader();
@@ -58,6 +59,39 @@ namespace MegaCasting.repository
             return packs;
         }
 
+        internal Pack Select(Int64 id,DateTime dateTime)
+        {
+            Pack pack = new Pack();
+
+            try
+            {
+                SqlCommand commande = new SqlCommand("SelectOnePack", connection);
+                commande.CommandType = CommandType.StoredProcedure;
+                commande.Parameters.Add("@id", SqlDbType.BigInt).Value = id;
+
+               connection.Open();
+                SqlDataReader dataReader = commande.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    PrixPackRepository prixPackRepository = new PrixPackRepository();
+
+
+                    pack.ID = dataReader.GetInt64(0);
+                    pack.Libelle = dataReader.GetString(1);
+                    pack.PrixPack = prixPackRepository.Select(pack.ID, dateTime);
+                    pack.NbrPoste = dataReader.GetInt32(2);
+                }
+                connection.Close();
+            }
+            catch (Exception test)
+            {
+                ErreurBDD erreurBDD = new ErreurBDD();
+                erreurBDD.ShowDialog();
+            }
+            return pack;
+        }
+        
+
         /// <summary>
         /// Insert les données dans la table "PackCasting" et retourne l'id insérer
         /// Utilise la procédure "InsertPackCasting"
@@ -72,7 +106,7 @@ namespace MegaCasting.repository
                 commande.CommandType = CommandType.StoredProcedure;
 
                 commande.Parameters.Add("@nom", SqlDbType.NVarChar).Value = pack.Libelle;
-               // commande.Parameters.Add("@prix", SqlDbType.Float).Value = pack.Prix; // repositoryPrixPack
+                // commande.Parameters.Add("@prix", SqlDbType.Float).Value = pack.Prix; // repositoryPrixPack
                 commande.Parameters.Add("@nbrPoste", SqlDbType.Int).Value = pack.NbrPoste;
 
                 commande.Parameters.Add("@IdReturn", SqlDbType.Int).Direction = ParameterDirection.Output;

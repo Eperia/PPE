@@ -1,0 +1,23 @@
+﻿<Window x:Class="MegaCasting.InformationHistoriquePack"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MegaCasting"
+        mc:Ignorable="d"
+        Title="InformationHistoriquePack" Height="421.795" Width="525.641">
+    <Grid>
+        <ListView Margin="10" x:Name="lvUsers" VerticalContentAlignment="Top"  
+            ScrollViewer.VerticalScrollBarVisibility="Visible"
+            ScrollViewer.CanContentScroll="False" >
+            <ListView.View>
+                <GridView >
+                    <GridViewColumn Header="libelle" Width="150" DisplayMemberBinding="{Binding pack.Libelle}"/>
+                    <GridViewColumn Header="Date d'achat" Width="150" DisplayMemberBinding="{Binding dt_Achat}"/>
+                    <GridViewColumn Header="Prix" Width="150" DisplayMemberBinding="{Binding pack.PrixPack.Prix}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</Window>

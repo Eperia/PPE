@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MegaCasting.repository
+namespace MegaCasting.Class
 {
     public class Professionnel
     {
@@ -18,7 +18,6 @@ namespace MegaCasting.repository
         private string ville;
         private string pays;
         private string codePostal;
-
         #endregion
         #region Propriété
         public Int64 Id

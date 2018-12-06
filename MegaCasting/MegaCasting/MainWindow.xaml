@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MegaCasting"
         mc:Ignorable="d"
-        Title="MegaCasting Gestion" Height="472" Width="435">
+        Title="MegaCasting Gestion" Height="681.506" Width="815">
     <Grid Margin="0,0,2,0">
 
         <Menu DockPanel.Dock="Top" Margin="0,0,0,395">
@@ -21,20 +21,21 @@
             <MenuItem Header="Gestion Pack" Click="MenuItem_Click_4">
             </MenuItem>
         </Menu>
-        <ListView Margin="10,10,3,65" Name="LvCasting" VerticalContentAlignment="Top"  
+        <ListView Margin="10,27,3,48" Name="LvCasting" VerticalContentAlignment="Top"  
           ScrollViewer.VerticalScrollBarVisibility="Visible"
           ScrollViewer.CanContentScroll="False" >
             <ListView.View>
                 <GridView >
-                    <GridViewColumn Header="Titre" Width="50" DisplayMemberBinding="{Binding Titre}" />
+                    <GridViewColumn Header="Titre" Width="100" DisplayMemberBinding="{Binding Titre}" />
                     <GridViewColumn Header="Desc" Width="150" DisplayMemberBinding="{Binding desc}" />
                     <GridViewColumn Header="Durée de diffusion" Width="150" DisplayMemberBinding="{Binding dure_dif}" />
                     <GridViewColumn Header="localisation" Width="120" DisplayMemberBinding="{Binding localisation}"/>
-                    <GridViewColumn Header="date début contrat" Width="120" DisplayMemberBinding="{Binding dt_debut_contrat}"/>
+                    <GridViewColumn Header="date début contrat" Width="150" DisplayMemberBinding="{Binding dt_debut_contrat}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="Reload" Content="Reload" HorizontalAlignment="Left" Margin="20,414,0,0" VerticalAlignment="Top" Width="75" Click="Reload_Click"/>
+        <Button x:Name="Reload" Content="Reload" HorizontalAlignment="Left" Margin="10,608,0,0" VerticalAlignment="Top" Width="75" Click="Reload_Click"/>
+        <Button x:Name="Ajouter" Content="Ajouter" HorizontalAlignment="Left" Margin="114,608,0,0" VerticalAlignment="Top" Width="75" Click="Ajouter_Click"/>
 
 
     </Grid>

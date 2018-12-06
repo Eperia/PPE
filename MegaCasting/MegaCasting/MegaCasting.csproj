@@ -56,6 +56,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Class\DomaineMetier.cs" />
+    <Compile Include="Class\Employer.cs" />
+    <Compile Include="Class\HistoriquePack.cs" />
     <Compile Include="Class\MD5Sample.cs" />
     <Compile Include="Class\Metier.cs" />
     <Compile Include="Class\OffreCasting.cs" />
@@ -90,8 +92,14 @@
     <Compile Include="InformationDomaineMetier.xaml.cs">
       <DependentUpon>InformationDomaineMetier.xaml</DependentUpon>
     </Compile>
+    <Compile Include="InformationHistoriquePack.xaml.cs">
+      <DependentUpon>InformationHistoriquePack.xaml</DependentUpon>
+    </Compile>
     <Compile Include="InformationMetier.xaml.cs">
       <DependentUpon>InformationMetier.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InformationOffreCasting.xaml.cs">
+      <DependentUpon>InformationOffreCasting.xaml</DependentUpon>
     </Compile>
     <Compile Include="InformationPack.xaml.cs">
       <DependentUpon>InformationPack.xaml</DependentUpon>
@@ -100,6 +108,8 @@
       <DependentUpon>InformationProfessionnel.xaml</DependentUpon>
     </Compile>
     <Compile Include="repository\DomaineMetierRepository.cs" />
+    <Compile Include="repository\EmployerRepository.cs" />
+    <Compile Include="repository\HistoriquePackRepository.cs" />
     <Compile Include="repository\MetierRepository.cs" />
     <Compile Include="repository\OffreCastingRepository.cs" />
     <Compile Include="repository\PackRepository.cs" />
@@ -147,7 +157,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="InformationHistoriquePack.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="InformationMetier.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InformationOffreCasting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
