@@ -49,6 +49,7 @@
     max-height: 3.5em;
     overflow: hidden;
     text-overflow:ellipsis;
+    word-wrap: break-word;
     transition: 1s;
 }
 

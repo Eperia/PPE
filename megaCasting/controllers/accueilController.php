@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
 session_start();
 include '../services/requeteSql.php';
 include '../services/function.php';
@@ -9,7 +9,6 @@ if (isset($_GET["auth-name"])){
 	$password = htmlentities($_GET["auth-pass"]);
 	requeteSql::connexion($email, $password);
 	header("Location: accueilController.php");
-	break;
 }
 
 $scripts = "";
@@ -45,12 +44,13 @@ if (isset($_GET["search"])) {
 		if ($key == "search") {
 			$search = str_replace("'", "&#39", $value);
 		}else{
+			
 			//Pour les checkboxs
 			$type = null;
 			if ($value == "on" || $value == "true") {
 				foreach ($listTypesMetiers as $nom => $a) {
 					// si c'est une type de metier
-					if ($a["Nom"] == $key) {
+					if (utf8_encode($a["Nom"]) == $key) {
 						$type = "DomaineMetier.Nom";
 						break;
 					}
@@ -58,14 +58,17 @@ if (isset($_GET["search"])) {
 				if ($type == null) {
 					foreach ($listTypesEmplois as $nom => $a) {
 						// si c'est un type d'emploi
-						if ($a["Nom"] == $key) {
+						if (utf8_encode($a["Nom"]) == $key) {
 							$type = "TypeContrat.Nom";
 							break;
 						}
 					}
 				}
 				// si il appartenait bien a un type
-				if ($type != null) $param[$type][$key] = true;
+				if ($type != null){
+					$param[$type][$key] = true;
+					$param[0] = true;
+				}
 			}
 		}
 	}

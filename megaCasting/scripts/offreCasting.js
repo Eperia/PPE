@@ -1,4 +1,4 @@
-//Si l'offre recherché n'existe pas
+﻿//Si l'offre recherché n'existe pas
 if (Offre[0] == undefined) {
 	container = document.getElementById("containerMain");
 	container.innerHTML = Page404;
@@ -9,7 +9,7 @@ if (Offre[0] == undefined) {
 	info = document.getElementById("offre-titre");
 	info.innerHTML += Offre.Titre;
 	info = document.getElementById("offre-date");
-	info.innerHTML += dateFormat(Offre["dt-demande"].date, "dd mmmm yyyy");
+	info.innerHTML += dateFormat(Offre["dt_debut_contrat"].date, "dd mmmm yyyy");
 	info = document.getElementById("offre-desc");
 	info.innerHTML += Offre.desc;
 
@@ -18,7 +18,7 @@ if (Offre[0] == undefined) {
 
 	info = document.getElementById("pro-nom");
 	var div = document.createElement("a");
-	var id = Offre["Id-Professionel"];
+	var id = Offre["Id_Professionel"];
 	div.setAttribute("href", "profilController.php?id=" + id);
 	div.innerHTML += Offre.Nom;
 	info.appendChild(div);

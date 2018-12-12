@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
 session_start();
 include '../services/requeteSql.php';
 include '../services/function.php';
@@ -10,7 +10,6 @@ if (isset($_GET["auth-name"])){
 	requeteSql::connexion($email, $password);
 	$id = htmlentities($_GET["id"]);
 	header("Location: offreCastingController.php?id=$id");
-	break;	
 }
 
 // recupere le contenue de la vue

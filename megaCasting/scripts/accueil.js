@@ -1,4 +1,4 @@
-function showListOffres(self, offres){
+﻿function showListOffres(self, offres){
 // pour chaque offre on génère une div que l'on rajoute sur la page
 for (var i = 0; i < offres.length; i++) {
 	self.appendChild(new OffreContainer(offres[i]).container);
@@ -15,7 +15,7 @@ function OffreContainer(offre){
 
 	var date = document.createElement('span');
 	date.className = 'offre-date';
-	date.innerHTML = "Date de début :" + dateFormat(offre["dt-demande"].date, "dd mmmm yyyy");
+	date.innerHTML = "Date de début :" + dateFormat(offre["dt_debut_contrat"].date, "dd mmmm yyyy");
 
 	var description = document.createElement('div');
 	description.className = 'offre-desc';
@@ -59,6 +59,7 @@ function CheckboxContainer(info){
 
 	var label = document.createElement('label');
 	label.className = 'checkbox-titre';
+	label.setAttribute("for", info.Id + info.Nom);
 	label.innerHTML = info.Nom;
 
 	var checkbox = document.createElement('input');

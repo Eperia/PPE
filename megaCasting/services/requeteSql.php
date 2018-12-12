@@ -1,21 +1,25 @@
-<?php
+﻿<?php
 /**
 * 
 */
 class requeteSQL
 {
 
-// Connexion a la bdd
+
+//Connexion a la bdd
 public static function connexionBdd(){
-	try{
-		$serverName = "HP-PC"; //serverName\instanceName
-		$connectionInfo = array( "Database"=>"megacasting", "UID"=>"sa", "PWD"=>"SQL2014");
+		$serverName = "tcp:smegacasting,49172";
+		$connectionInfo = array( "Database" => "Megacasting");
+
+		/* Connect using Windows Authentication. */  
+		$conn = sqlsrv_connect( $serverName, $connectionInfo);  
+		if( $conn === false )  
+		{  
+     			echo "Unable to connect. ". get_current_user() . "</br>";  
+     			die(print_r( sqlsrv_errors(), true));  
+		}  
 		$bdd = sqlsrv_connect( $serverName, $connectionInfo);
 		return $bdd;
-	}
-	catch (Exception $e){
-		die('Erreur : ' . $e->getMessage());
-	}
 }
 
 // Ferme la connrexion a la bdd
@@ -27,6 +31,7 @@ public static function closeBdd($bdd){
 public static function connexion($email, $password){
 	$bdd =  requeteSQL::connexionBdd();
 	$success = false;
+	$password = md5($password);
 	$sql = "select Id from professionnel where Email = '$email' and mdp = '$password'";
 	$stmt = sqlsrv_query( $bdd, $sql);
 	$stmt = sqlsrv_fetch_array($stmt);
@@ -52,7 +57,7 @@ public static function Deconnexion(){
 public static function getProfil($id = null){
 	if ($id == null) $id = $_SESSION["loginId"];
 	$bdd =  requeteSQL::connexionBdd();
-	$sql = "select Nom,Email,Telephone,Url,Fax,Adresse from professionnel where Id=$id";
+	$sql = "select Nom,Email,Telephone,Url,Fax,rue,Ville,CodePostal,Pays from professionnel where Id=$id";
 	$stmt = sqlsrv_query( $bdd, $sql);
 	$stmt = sqlsrv_fetch_array($stmt);
 	
@@ -63,7 +68,7 @@ public static function getProfil($id = null){
 // Retourne toute les offres valides
 public static function getAlloffres(){
 	$bdd =  requeteSQL::connexionBdd();
-	$sql = "select  OffreCasting.Id,Titre,[desc],[dt-demande],Nom from OffreCasting inner join professionnel on OffreCasting.[Id-Professionel] = professionnel.Id where Etat = 'Valider'";
+	$sql = "select  OffreCasting.Id,Titre,[desc],dt_debut_contrat,Nom from OffreCasting inner join professionnel on OffreCasting.Id_Professionel = professionnel.Id where GETDATE() < DATEADD(day, dure_dif, dt_debut_publi)";
 	$stmt = sqlsrv_query( $bdd, $sql);
 	$response = [];
 
@@ -78,7 +83,7 @@ public static function getAlloffres(){
 // Retourne toute les offres Valides d'un professionnel
 public static function getOffresPro($id){
 	$bdd =  requeteSQL::connexionBdd();
-	$sql = "select Titre,[desc],[dt-demande] from OffreCasting where [Id-Professionel]=$id and Etat='Valider'";
+	$sql = "select Titre,[desc],dt_debut_contrat from OffreCasting where Id_Professionel=$id and GETDATE() < DATEADD(day, dure_dif, dt_debut_publi)";
 	$stmt = sqlsrv_query( $bdd, $sql);
 	$response = [];
 
@@ -93,7 +98,7 @@ public static function getOffresPro($id){
 // Retourne l'offre valide correspondante
 public static function getOffre($id){
 	$bdd =  requeteSQL::connexionBdd();
-	$sql = "select Titre,[desc],[dt-demande],[Id-Professionel], Nom,Email,Telephone,Url,Fax,Adresse from OffreCasting inner join professionnel on OffreCasting.[Id-Professionel] = professionnel.Id where OffreCasting.Id = $id and Etat='Valider'";
+	$sql = "select Titre,[desc],dt_debut_contrat,Id_Professionel, Nom,Email,Telephone,Url,Fax,Rue,Ville,CodePostal,Pays from OffreCasting inner join professionnel on OffreCasting.Id_Professionel = professionnel.Id where OffreCasting.Id = $id and GETDATE() < DATEADD(day, dure_dif, dt_debut_publi)";
 	$stmt = sqlsrv_query($bdd, $sql);
 	$response = [];
 
@@ -114,12 +119,11 @@ public static function getSearchOffres($search, $parametre = null){
 			$sql = "DECLARE @IdentifiantCasting INT;
 
 					DECLARE curseur CURSOR FOR 
-					select OffreCasting.Id from OffreCasting 
-					inner join Metier_OffreCasting on OffreCasting.Id = Metier_OffreCasting.[Id-OffreCasting]
-					inner join Metier on Metier_OffreCasting.[Id-Metier] = Metier.Id
-					inner join DomaineMetier on Metier.[Id-DomaineMetier] = DomaineMetier.Id
-					inner join TypeContrat_OffreCasting on OffreCasting.Id = TypeContrat_OffreCasting.[ID-OffreCasting]
-					inner join TypeContrat on TypeContrat_OffreCasting.[Id-TypeContrat] = TypeContrat.Id
+					select OffreCasting.Id from OffreCasting
+					inner join Metier_OffreCasting on OffreCasting.Id = Metier_OffreCasting.[Id_OffreCasting]
+					inner join Metier on Metier_OffreCasting.Id_Metier = Metier.Id
+					inner join DomaineMetier on Metier.Id_DomaineMetier = DomaineMetier.Id
+					inner join TypeContrat on Metier_OffreCasting.Id_TypeContrat = TypeContrat.Id
 					where OffreCasting.Titre LIKE ('%$search%') OR OffreCasting.[desc] LIKE '%$search%'
 					group by TypeContrat.Nom, OffreCasting.Id, DomaineMetier.Nom HAVING
 					";
@@ -127,7 +131,7 @@ public static function getSearchOffres($search, $parametre = null){
 				if (gettype($array) == 'array') {
 					foreach ($array as $nom => $valeur) {
 						if ($valeur) {
-							$sql .= " $type LIKE '%$nom%' AND";
+							$sql .= " $type LIKE '$nom' AND";
 						}
 					}
 				}
@@ -140,14 +144,14 @@ public static function getSearchOffres($search, $parametre = null){
 					FETCH NEXT FROM curseur INTO @IdentifiantCasting;
 					WHILE @@FETCH_STATUS = 0
 					BEGIN
-							select OffreCasting.Id, Titre, [desc], [dt-demande], Nom from OffreCasting inner join professionnel on OffreCasting.[Id-Professionel] = professionnel.Id where OffreCasting.Id = @IdentifiantCasting where OffreCasting.Etat = 'Valider'
+						select OffreCasting.Id, Titre, [desc], dt_debut_contrat, Nom from OffreCasting inner join professionnel on OffreCasting.Id_Professionel = professionnel.Id where OffreCasting.Id = @IdentifiantCasting AND GETDATE() < DATEADD(day, dure_dif, dt_debut_publi)
 						FETCH NEXT FROM curseur INTO @IdentifiantCasting;
 					END
 					CLOSE curseur;
 					DEALLOCATE curseur";
 	}else{
 		// Si seulement la bar de recherche est remplie
-		$sql = "select OffreCasting.Id, Titre, [desc], [dt-demande], Nom from OffreCasting inner join professionnel on OffreCasting.[Id-Professionel] = professionnel.Id where Etat= 'Valider' AND(OffreCasting.Titre LIKE ('%$search%') OR OffreCasting.[desc] LIKE '%$search%')";
+		$sql = "select OffreCasting.Id, Titre, [desc], dt_debut_contrat, Nom from OffreCasting inner join professionnel on OffreCasting.Id_Professionel = professionnel.Id where GETDATE() < DATEADD(day, dure_dif, dt_debut_publi) AND(OffreCasting.Titre LIKE ('%$search%') OR OffreCasting.[desc] LIKE '%$search%')";
 	}
 	$stmt = sqlsrv_query($bdd, $sql);
 	$response = [];
@@ -163,14 +167,8 @@ public static function getSearchOffres($search, $parametre = null){
 			if ($valid) array_push($response, $temp);
 		}
 	} while (sqlsrv_next_result($stmt));
-
 	requeteSQL::closeBdd($bdd);
 	return $response;
-}
-
-// Retourne l'historique des achats de l'utilisateur
-public static function souscriptionPack(){
-
 }
 
 // Retourne tout les types d'emplois
@@ -204,7 +202,7 @@ public static function getAllTypesMetiers(){
 // Retourne toutes les interviews et conseils
 public static function getAllInfos(){
 	$bdd =  requeteSQL::connexionBdd();
-	$sql = "select * from ContenuEditorial inner join TypeContenu on ContenuEditorial.[Id-TypeContenu] = TypeContenu.Id";
+	$sql = "select * from ContenuEditorial inner join TypeContenu on ContenuEditorial.Id_TypeContenu = TypeContenu.Id";
 	$stmt = sqlsrv_query( $bdd, $sql);
 	$response = [];
 
@@ -218,7 +216,7 @@ public static function getAllInfos(){
 // Retourne l'interview et conseil recherché
 public static function getSearchInfo($id){
 	$bdd =  requeteSQL::connexionBdd();
-	$sql = "select * from ContenuEditorial inner join TypeContenu on ContenuEditorial.[Id-TypeContenu] = TypeContenu.Id where ContenuEditorial.Id = $id";
+	$sql = "select * from ContenuEditorial inner join TypeContenu on ContenuEditorial.Id_TypeContenu = TypeContenu.Id where ContenuEditorial.Id = $id";
 	$stmt = sqlsrv_query( $bdd, $sql);
 	$response = [];
 
@@ -232,7 +230,7 @@ public static function getSearchInfo($id){
 // Retourne tout les packs de Casting
 public static function getAllPacks(){
 	$bdd =  requeteSQL::connexionBdd();
-	$sql = "select * from PackCasting";
+	$sql = "select * from PackCasting inner join PrixPack on PackCasting.Id = PrixPack.Id_PackCasting where dt_fin is null";
 	$stmt = sqlsrv_query( $bdd, $sql);
 	$response = [];
 
@@ -246,7 +244,8 @@ public static function getAllPacks(){
 public static function getPartenaire($username, $password){
 	$bdd =  requeteSQL::connexionBdd();
 	$success = false;
-	$sql = "select Email from partenaire where Email = 'username' and mdp = '$password'";
+	$password = md5($password);
+	$sql = "select Email from partenaire where Email = '$username' and mdp = '$password'";
 	$stmt = sqlsrv_query( $bdd, $sql);
 	$stmt = sqlsrv_fetch_array($stmt);
 	if ($stmt != null)$success = true;

@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
 session_start();
 include '../services/requeteSql.php';
 include '../services/function.php';
@@ -9,7 +9,6 @@ if (isset($_GET["auth-name"])){
 	$password = htmlentities($_GET["auth-pass"]);
 	requeteSql::connexion($email, $password);
 	header("Location: profilController.php");
-	break;
 }
 
 // recupere le contenue de la vue

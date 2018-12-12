@@ -21,13 +21,17 @@ body{
 	border: none;
 	padding: 15px 30px;
 	vertical-align: top;
-
 	font-size: 1.1em;
 }
 
+.error{
+	display: inline-block;
+}
+
 header img{
-	width: 20vw;
+	width: 14vw;
 	margin-right: 50px;
+	height: 13vh;
 }
 
 header button, header > div{
@@ -42,9 +46,10 @@ header .authDiv{
 	border-top-left-radius: 5px;
 }
 
-header > button[active], header > button:hover{
+header > button[active], header > a:hover > button{
 	background-color: rgb(35,35,35);
 	cursor: pointer;
+	transition: 0.3s;
 }
 
 header > div:hover{
@@ -119,6 +124,8 @@ header > div:hover > button{
 .panel[show]{
 	transition: 0.5s;
 	top: -8vh;
+	height: 250px;
+	display: all;
 }
 
 
@@ -182,4 +189,39 @@ footer{
 	color: lightgray;
 	text-align: center;
 	margin: 10px 0; 
+}
+
+
+@media (max-width: 1080px) {
+    
+	header{
+		text-align: center;
+	}
+
+    header > a > button{
+    	width: 100vw;
+    }
+    header img{
+    	width: 40vw;
+    	margin-right: 0;
+	height:unset;
+    }
+
+    header .authDiv{
+    	float: none;
+    	border-radius: 5px;
+    }
+
+	.panel[show]{
+		transition: 0.5s;
+		width: 300px;
+		position: relative;
+		height: 200px;
+		right: unset;
+		left: unset;
+		top: 10px;
+		margin: auto;
+		min-width: 150px;
+	}
+
 }

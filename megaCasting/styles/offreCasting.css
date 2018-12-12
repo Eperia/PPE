@@ -20,6 +20,7 @@
 
 #offre-titre{
 	font-size: 1.2em;
+	word-wrap: break-word;
 }
 
 #offre-date{
@@ -33,6 +34,7 @@
 	background-color: white;
 	border-radius: 5px;
 	color: black;
+	word-wrap: break-word;
 }
 
 #offre-desc > div{
